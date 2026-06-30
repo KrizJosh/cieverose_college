@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#1a5f9a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Cieverose College">
+    <meta name="description" content="Cieverose College - Providing quality education since 2010">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Cieverose College, Inc. | Teacher Dashboard</title>
+    <style>
+        /* ----- RESET & VARIABLES ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        :root {
+            --primary: #0f2b4b;
+            --primary-light: #1a4b7a;
+            --gold: #f5b342;
+            --gold-light: #ffd966;
+            --gray-bg: #f2f6fc;
+            --card-bg: #ffffff;
+            --text-dark: #0b1e2e;
+            --text-muted: #4a5b6e;
+            --border-light: #e9edf4;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 12px 32px rgba(0, 20, 40, 0.08);
+            --radius-lg: 20px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--gray-bg);
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding-top: 0;
+            transition: background 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .stat-box,
+        body.dark-mode .course-card,
+        body.dark-mode .add-card,
+        body.dark-mode .table-wrap,
+        body.dark-mode .tab-container,
+        body.dark-mode .tab-content,
+        body.dark-mode .tab-header,
+        body.dark-mode .msg-item,
+        body.dark-mode .news-card,
+        body.dark-mode .announcement-item,
+        body.dark-mode .hero-section {
+            background: #2d2d44;
+            border-color: #3d3d5c;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .stat-box .num,
+        body.dark-mode .course-card h4,
+        body.dark-mode .section-title,
+        body.dark-mode .tab-btn,
+        body.dark-mode .news-card h4,
+        body.dark-mode .announcement-item .title {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .tab-btn.active {
+            background: var(--gold);
+            color: #0f2b4b;
+        }
+
+        body.dark-mode .tab-badge {
+            background: #3d3d5c;
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .tab-btn.active .tab-badge {
+            background: #0f2b4b;
+            color: var(--gold);
+        }
+
+        body.dark-mode .stat-box .label,
+        body.dark-mode .course-card p,
+        body.dark-mode .text-muted,
+        body.dark-mode .msg-item .time,
+        body.dark-mode .news-card p,
+        body.dark-mode .announcement-item .date {
+            color: #a0a0b8;
+        }
+
+        body.dark-mode .badge-gray {
+            background: #3d3d5c;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .table-wrap th {
+            background: #1a1a2e;
+            color: #f0f0f0;
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .table-wrap td {
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .settings-group input,
+        body.dark-mode .settings-group select {
+            background: #1a1a2e;
+            border-color: #3d3d5c;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .btn {
+            background: #2d2d44;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .btn-gold {
+            background: var(--gold);
+            color: #0f2b4b;
+        }
+
+        body.dark-mode .btn-gold:hover {
+            background: var(--gold-light);
+        }
+
+        body.dark-mode .nav-bar {
+            background: #1a1a2e;
+            border-bottom-color: var(--gold);
+        }
+
+        body.dark-mode .footer {
+            background: #1a1a2e;
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .flyout-menu {
+            background: #2d2d44;
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .flyout-menu h3 {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .flyout-menu label {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .flyout-menu select {
+            background: #1a1a2e;
+            border-color: #3d3d5c;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .flyout-menu .flyout-close {
+            color: #a0a0b8;
+        }
+
+        body.dark-mode .flyout-menu .flyout-close:hover {
+            color: #e74c3c;
+        }
+
+        body.dark-mode .flyout-overlay {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        body.dark-mode .modal-content {
+            background: #2d2d44;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .modal-header {
+            background: #1a1a2e;
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .modal-body {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .modal-footer {
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .news-meta {
+            color: #a0a0b8 !important;
+        }
+
+        /* ----- SCROLLBAR ----- */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-light);
+        }
+
+        body.dark-mode ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        /* ----- CONTAINER ----- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ----- STICKY NAV ----- */
+        .nav-bar {
+            background: var(--primary);
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            min-height: 68px;
+            border-bottom: 3px solid var(--gold);
+            transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(0);
+        }
+
+        .nav-bar.scrolled {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .nav-bar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-brand:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-brand img {
+            height: 36px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.4s ease;
+        }
+
+        .nav-brand img:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .nav-brand i {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.4rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffd966;
+        }
+
+        .nav-links a i {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover i {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .nav-settings-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-settings-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .nav-settings-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .nav-settings-btn:hover {
+            background: var(--gold);
+            color: var(--primary);
+            border-color: var(--gold);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 16px rgba(245, 179, 66, 0.3);
+        }
+
+        .nav-settings-btn i {
+            transition: transform 0.4s ease;
+        }
+
+        .nav-settings-btn:hover i {
+            transform: rotate(90deg);
+        }
+
+        /* ----- HERO SECTION ----- */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(15, 43, 75, 0.92) 0%, rgba(26, 75, 122, 0.85) 100%),
+                url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%231a4b7a%22/%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23f5b342%22 opacity=%220.08%22/%3E%3C/svg%3E');
+            padding: 6rem 1.5rem 3rem;
+            border-radius: 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            border-bottom: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            margin-top: 68px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23f5b342%22 opacity=%220.04%22/%3E%3C/svg%3E') repeat;
+            pointer-events: none;
+            animation: heroPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes heroPulse {
+            0%, 100% { opacity: 0.04; transform: scale(1); }
+            50% { opacity: 0.08; transform: scale(1.05); }
+        }
+
+        .hero-section .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: heroFadeIn 1s ease;
+        }
+
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section .hero-title {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-section h1 i {
+            color: var(--gold);
+            display: inline-block;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-5deg); }
+        }
+
+        .hero-section .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0.8rem auto 1.2rem;
+            border-radius: 2px;
+            animation: expandWidth 1s ease 0.6s both;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        .hero-section .hero-description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 1s both;
+        }
+
+        /* ----- BUTTONS ----- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            background: white;
+            color: var(--primary);
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            box-shadow: 0 8px 24px rgba(245, 179, 66, 0.35);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: white;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-sm {
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+        }
+
+        /* ----- SECTION TITLES ----- */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .section-title i {
+            color: var(--gold);
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ----- STATS ROW ----- */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.2rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease both;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box:nth-child(1) { animation-delay: 0.1s; }
+        .stat-box:nth-child(2) { animation-delay: 0.2s; }
+        .stat-box:nth-child(3) { animation-delay: 0.3s; }
+        .stat-box:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .stat-box:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-box:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-box .num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: color 0.3s ease;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        /* ----- TAB CONTAINER ----- */
+        .tab-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-container:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tab-header {
+            display: flex;
+            border-bottom: 2px solid var(--border-light);
+            background: #f8fafc;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            overflow-x: auto;
+            padding: 0 0.5rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 1.8rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gold);
+            transition: 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .tab-btn:hover::after,
+        .tab-btn.active::after {
+            width: 60%;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+            background: rgba(245, 179, 66, 0.05);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background: rgba(245, 179, 66, 0.08);
+        }
+
+        .tab-btn.active::after {
+            width: 80%;
+        }
+
+        .tab-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .tab-btn:hover i {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        .tab-badge {
+            background: #e9edf4;
+            color: var(--text-muted);
+            padding: 0.1rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .tab-btn.active .tab-badge {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            padding: 1.8rem;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ----- COURSE GRID ----- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.8rem 1.6rem 1.6rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.05s; }
+        .course-card:nth-child(2) { animation-delay: 0.1s; }
+        .course-card:nth-child(3) { animation-delay: 0.15s; }
+        .course-card:nth-child(4) { animation-delay: 0.2s; }
+        .course-card:nth-child(5) { animation-delay: 0.25s; }
+        .course-card:nth-child(6) { animation-delay: 0.3s; }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .course-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .course-top .icon {
+            font-size: 2rem;
+            color: var(--primary);
+            transition: transform 0.4s ease;
+        }
+
+        .course-card:hover .course-top .icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .course-top .badge {
+            background: #e9edf4;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: 0.3s ease;
+        }
+
+        .course-card:hover .course-top .badge {
+            background: var(--gold);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .course-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .course-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 6px 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .course-meta i {
+            margin-right: 4px;
+            color: var(--gold);
+        }
+
+        .course-desc {
+            font-size: 0.9rem;
+            color: #334155;
+            margin: 4px 0 12px;
+            transition: color 0.3s ease;
+        }
+
+        .course-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            border-top: 1px solid #eef2f7;
+            transition: border-color 0.3s ease;
+        }
+
+        .course-card:hover .course-footer {
+            border-color: var(--gold);
+        }
+
+        .course-footer .progress-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .course-footer .progress-info i {
+            color: #27ae60;
+            transition: transform 0.4s ease;
+        }
+
+        .course-card:hover .course-footer .progress-info i {
+            transform: scale(1.2);
+        }
+
+        .btn-manage {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-manage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-manage:hover::before {
+            left: 100%;
+        }
+
+        .btn-manage:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(15, 43, 75, 0.3);
+        }
+
+        /* ----- ADD CARD ----- */
+        .add-card {
+            background: #fafcff;
+            border: 2px dashed #c5d2e3;
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            min-height: 220px;
+            animation: fadeInUp 0.6s ease 0.35s both;
+        }
+
+        .add-card:hover {
+            border-color: var(--gold);
+            background: #f8faff;
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .add-card i {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .add-card:hover i {
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .add-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .add-card span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        /* ----- TABLE ----- */
+        .table-wrap {
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            overflow-x: auto;
+            padding: 0.2rem;
+            transition: 0.3s ease;
+        }
+
+        .table-wrap:hover {
+            border-color: var(--gold);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem 0.8rem;
+            background: #f8fafc;
+            color: var(--primary);
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-light);
+            transition: 0.3s ease;
+        }
+
+        td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #f0f4fa;
+            transition: 0.3s ease;
+        }
+
+        tr {
+            transition: background 0.3s ease;
+        }
+
+        tr:hover td {
+            background: rgba(245, 179, 66, 0.05);
+        }
+
+        .badge {
+            background: var(--gold);
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: 0.3s ease;
+        }
+
+        .badge-gray {
+            background: #e9edf4;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #3d4f62;
+            transition: 0.3s ease;
+        }
+
+        /* ----- MESSAGES ----- */
+        .msg-item {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.4rem;
+            border: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            transition: 0.3s ease;
+            animation: fadeInUp 0.4s ease both;
+        }
+
+        .msg-item:nth-child(1) { animation-delay: 0.05s; }
+        .msg-item:nth-child(2) { animation-delay: 0.1s; }
+        .msg-item:nth-child(3) { animation-delay: 0.15s; }
+        .msg-item:nth-child(4) { animation-delay: 0.2s; }
+
+        .msg-item:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .msg-item .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .msg-item .left i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .msg-item:hover .left i {
+            transform: scale(1.2);
+        }
+
+        .msg-item .time {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        /* ============================================================ */
+        /* ===== NEWS & ANNOUNCEMENTS (like attachment) ===== */
+        /* ============================================================ */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 820px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .news-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            padding: 1.8rem;
+            transition: 0.3s ease;
+        }
+
+        .news-section:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .news-section .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .news-section .section-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-section .section-header h3 i {
+            color: var(--gold);
+        }
+
+        .news-section .section-header .count-badge {
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.1rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border-light);
+            margin-bottom: 0.8rem;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .news-card .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .news-card .news-header .news-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .news-card:hover .news-header .news-title {
+            color: var(--gold);
+        }
+
+        .news-card .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .news-card .news-meta i {
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        .news-card .news-meta .author {
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .news-card .news-meta .date {
+            color: var(--text-muted);
+        }
+
+        .news-card .news-excerpt {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card .news-tag {
+            display: inline-block;
+            background: rgba(245, 179, 66, 0.15);
+            color: var(--gold);
+            padding: 0.05rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            margin-top: 0.4rem;
+        }
+
+        /* Announcements List (like attachment) */
+        .announcements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .announcements-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .announcements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .announcements-list li:hover {
+            padding-left: 8px;
+            color: var(--gold);
+        }
+
+        .announcements-list li .bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .announcements-list li .title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .announcements-list li:hover .title {
+            color: var(--gold);
+        }
+
+        .announcements-list li .date-tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* ----- FOOTER ----- */
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: 0.3s ease;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .footer a:hover::after {
+            width: 100%;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        /* ============================================================ */
+        /* ===== FLYOUT SETTINGS MENU ===== */
+        /* ============================================================ */
+        .flyout-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 9998;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .flyout-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .flyout-menu {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100%;
+            background: white;
+            box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            padding: 2rem 1.8rem;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            border-left: 3px solid var(--gold);
+        }
+
+        .flyout-menu.open {
+            right: 0;
+        }
+
+        .flyout-menu .flyout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .flyout-menu .flyout-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flyout-menu .flyout-header h3 i {
+            color: var(--gold);
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        .flyout-menu .flyout-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.3s ease;
+            padding: 0.2rem;
+            line-height: 1;
+        }
+
+        .flyout-menu .flyout-close:hover {
+            color: #e74c3c;
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .flyout-menu .settings-group {
+            margin-bottom: 1.8rem;
+            animation: fadeInUp 0.4s ease both;
+        }
+
+        .flyout-menu .settings-group:nth-child(1) { animation-delay: 0.1s; }
+        .flyout-menu .settings-group:nth-child(2) { animation-delay: 0.2s; }
+
+        .flyout-menu .settings-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .flyout-menu .settings-group select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            border: 1px solid #dce3ed;
+            font-size: 0.95rem;
+            background: white;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .flyout-menu .settings-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(245, 179, 66, 0.15);
+        }
+
+        .flyout-menu .settings-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.4s ease 0.3s both;
+        }
+
+        .flyout-menu .settings-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 120px;
+        }
+
+        .flyout-menu #settingsStatusFlyout {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* ============================================================ */
+        /* ===== CUSTOM MODAL ===== */
+        /* ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: modalSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalSlideUp {
+            from { transform: translateY(40px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-header .modal-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-right: 12px;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .modal-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            flex: 1;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.3s ease;
+            padding: 0.2rem;
+            line-height: 1;
+        }
+
+        .modal-close-btn:hover {
+            color: #e74c3c;
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .modal-body {
+            padding: 1.8rem 2rem;
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-body .demo-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        .modal-body .feature-icon {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-right: 6px;
+        }
+
+        .modal-footer {
+            padding: 1rem 2rem 1.8rem 2rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .modal-footer .btn-modal {
+            padding: 0.6rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .modal-footer .btn-modal-primary {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .modal-footer .btn-modal-primary:hover {
+            background: var(--gold-light);
+            transform: scale(1.05);
+        }
+
+        .modal-footer .btn-modal-secondary {
+            background: #e9edf4;
+            color: var(--text-muted);
+        }
+
+        .modal-footer .btn-modal-secondary:hover {
+            background: #dce3ed;
+            transform: scale(1.05);
+        }
+
+        /* ----- TOAST ----- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--gold);
+            transform: translateY(120px) scale(0.9);
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            font-weight: 500;
+        }
+
+        .toast.show {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .toast i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1024px) {
+            .hero-section h1 {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .nav-links {
+                gap: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .course-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section {
+                padding: 5rem 1.5rem 2.5rem;
+                margin-top: 60px;
+            }
+            .tab-btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .flyout-menu {
+                width: 340px;
+                right: -360px;
+            }
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-bar {
+                flex-direction: column;
+                padding: 0.6rem 1rem;
+                gap: 0.4rem;
+                min-height: 60px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 0.6rem;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+            .nav-links a span {
+                display: none;
+            }
+            .hero-section h1 {
+                font-size: 1.6rem;
+            }
+            .hero-section {
+                padding: 4.5rem 1rem 2rem;
+                margin-top: 56px;
+            }
+            .hero-section .hero-description {
+                font-size: 1rem;
+            }
+            .tab-btn {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.75rem;
+            }
+            .tab-btn span {
+                display: none;
+            }
+            .tab-content {
+                padding: 1rem;
+            }
+            .tab-badge {
+                font-size: 0.6rem;
+                padding: 0.05rem 0.4rem;
+            }
+            .flyout-menu {
+                width: 100%;
+                max-width: 100vw;
+                right: -100%;
+                padding: 1.5rem 1.2rem;
+            }
+            .flyout-menu.open {
+                right: 0;
+            }
+            .modal-content {
+                max-width: 340px;
+            }
+            .modal-header {
+                padding: 1rem 1.2rem 0.6rem 1.2rem;
+            }
+            .modal-body {
+                padding: 1.2rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .modal-footer {
+                padding: 0.8rem 1.2rem 1.2rem 1.2rem;
+            }
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .stat-box {
+                padding: 0.8rem 0.6rem;
+            }
+            .stat-box .num {
+                font-size: 1.5rem;
+            }
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                width: auto;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .news-section {
+                padding: 1.2rem;
+            }
+            .news-card {
+                padding: 0.8rem 1rem;
+            }
+            .announcements-list li {
+                padding: 0.5rem 0;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.6rem;
+            }
+            .stat-box .num {
+                font-size: 1.2rem;
+            }
+            .stat-box .label {
+                font-size: 0.7rem;
+            }
+            .hero-section h1 {
+                font-size: 1.4rem;
+            }
+            .btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .flex { display: flex; gap: 12px; flex-wrap: wrap; }
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+		
+		
+		.nav-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 15px 0;
+		}
+		
+		logo {
+			display: flex;
+			align-items: center;
+			font-weight: bold;
+			color: var(--white);
+			font-size: 1.3rem;
+			transition: var(--transition);
+		}
+
+		.logo:hover {
+			color: var(--secondary-color);
+		}
+
+		.logo img {
+			margin-right: 10px;
+			height: 40px;
+		}
+
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar" id="mainNav">
+		<div class="nav-container">
+			<a href="index.html" class="logo">
+				<img src="logo.png" alt="Cieverose College Logo" style="height: 50px;">
+				<span>Cieverose College</span>
+			</a>
+        </div>
+        <ul class="nav-links">
+            <li><a class="active" data-page="home"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li><a data-page="contact"><i class="fas fa-phone"></i> <span>Contact</span></a></li>
+            <li>
+                <button class="nav-settings-btn" onclick="toggleFlyout()">
+                    <i class="fas fa-cog"></i> <span>Settings</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-title">Cieverose College, Inc.</div>
+            <h1><i class="fas fa-graduation-cap"></i> Dashboard</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-description">Manage your courses, track student progress, and stay organized with Cieverose College's Learning Management System.</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <div id="page-home" class="page-section active">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> Dashboard Overview</h2>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="num"><span class="counter" data-target="8">8</span></span>
+                    <span class="label">Active Courses</span>
+                </div>
+                <div class="stat-box">
+                    <span class="num"><span class="counter" data-target="124">925</span></span>
+                    <span class="label">Students</span>
+                </div>
+                <div class="stat-box">
+                    <span class="num"><span class="counter" data-target="14">67</span></span>
+                    <span class="label">Pending Assignments</span>
+                </div>
+                <div class="stat-box">
+                    <span class="num"><span class="counter" data-target="92">93</span>%</span>
+                    <span class="label">Avg. Completion</span>
+                </div>
+            </div>
+
+			
+            <div class="tab-container">
+                <div class="tab-header">
+                    <button class="tab-btn active" data-tab="mycourses"><i class="fas fa-book"></i> <span>My Courses</span></button>
+                    <button class="tab-btn" data-tab="students"><i class="fas fa-users"></i> <span>Students</span> <span class="tab-badge">124</span></button>
+                    <button class="tab-btn" data-tab="gradebook"><i class="fas fa-file-alt"></i> <span>Gradebook</span></button>
+                    <button class="tab-btn" data-tab="messages"><i class="fas fa-envelope"></i> <span>Messages</span></button>
+                </div>
+
+                <div id="tab-mycourses" class="tab-content active">
+                    <div class="course-grid" id="courseGrid"></div>
+                </div>
+
+                <div id="tab-students" class="tab-content">
+                    <div class="flex" style="margin-bottom:1.2rem;">
+                        <input type="text" id="studentSearch" placeholder="Search students..." style="padding:0.6rem 1.2rem; border-radius:60px; border:1px solid #dce3ed; flex:1; min-width:180px; transition:0.3s ease;">
+                        <button class="btn btn-gold" onclick="showDemoModal('📧 Send Bulk Message', 'This feature allows you to send messages to all students at once. Perfect for announcements and reminders.')"><i class="fas fa-envelope"></i> <span>Message All</span></button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Name</th><th>Course</th><th>Progress</th><th>Grade</th><th></th></tr></thead>
+                            <tbody id="studentTableBody">
+                                <tr><td>Maria Santos</td><td>ICT 101</td><td>78%</td><td><span class="badge">B+</span></td><td><button class="btn btn-sm" style="background:#e9edf4; border:none; border-radius:40px; cursor:pointer; font-weight:600; padding:0.2rem 1.2rem; transition:0.3s ease;" onclick="showDemoModal('👤 View Student Profile', 'View complete student profile including attendance, grades, and performance history.')">View</button></td></tr>
+                                <tr><td>Juan Dela Cruz</td><td>HE 201</td><td>45%</td><td><span class="badge-gray">D</span></td><td><button class="btn btn-sm" style="background:#e9edf4; border:none; border-radius:40px; cursor:pointer; font-weight:600; padding:0.2rem 1.2rem; transition:0.3s ease;" onclick="showDemoModal('👤 View Student Profile', 'View complete student profile including attendance, grades, and performance history.')">View</button></td></tr>
+                                <tr><td>Ana Reyes</td><td>ABM 301</td><td>92%</td><td><span class="badge">A-</span></td><td><button class="btn btn-sm" style="background:#e9edf4; border:none; border-radius:40px; cursor:pointer; font-weight:600; padding:0.2rem 1.2rem; transition:0.3s ease;" onclick="showDemoModal('👤 View Student Profile', 'View complete student profile including attendance, grades, and performance history.')">View</button></td></tr>
+                                <tr><td>Carlos Gomez</td><td>HUMSS 101</td><td>63%</td><td><span class="badge-gray">C+</span></td><td><button class="btn btn-sm" style="background:#e9edf4; border:none; border-radius:40px; cursor:pointer; font-weight:600; padding:0.2rem 1.2rem; transition:0.3s ease;" onclick="showDemoModal('👤 View Student Profile', 'View complete student profile including attendance, grades, and performance history.')">View</button></td></tr>
+                                <tr><td>Rosa Lim</td><td>GAS 102</td><td>51%</td><td><span class="badge-gray">D+</span></td><td><button class="btn btn-sm" style="background:#e9edf4; border:none; border-radius:40px; cursor:pointer; font-weight:600; padding:0.2rem 1.2rem; transition:0.3s ease;" onclick="showDemoModal('👤 View Student Profile', 'View complete student profile including attendance, grades, and performance history.')">View</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="tab-gradebook" class="tab-content">
+                    <div class="flex" style="margin-bottom:1rem;">
+                        <button class="btn btn-gold" onclick="showDemoModal('📊 Export Grades', 'Export all grades to CSV or PDF format for reporting and record-keeping.')"><i class="fas fa-download"></i> Export</button>
+                        <button class="btn" style="background:#e9edf4; border:1px solid var(--border-light); transition:0.3s ease;" onclick="showDemoModal('✏️ Edit Grades', 'Edit student grades, add comments, and update performance records.')"><i class="fas fa-pencil-alt"></i> Edit</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Student</th><th>Assignment 1</th><th>Midterm</th><th>Final</th><th>Average</th><th>Status</th></tr></thead>
+                            <tbody>
+                                <tr><td>Maria Santos</td><td>88</td><td>82</td><td>91</td><td>87</td><td><span class="badge">Pass</span></td></tr>
+                                <tr><td>Juan Dela Cruz</td><td>65</td><td>58</td><td>62</td><td>61</td><td><span class="badge-gray">Fail</span></td></tr>
+                                <tr><td>Ana Reyes</td><td>95</td><td>92</td><td>97</td><td>95</td><td><span class="badge">Pass</span></td></tr>
+                                <tr><td>Carlos Gomez</td><td>72</td><td>68</td><td>74</td><td>71</td><td><span class="badge">Pass</span></td></tr>
+                                <tr><td>Rosa Lim</td><td>55</td><td>60</td><td>58</td><td>57</td><td><span class="badge-gray">Fail</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="tab-messages" class="tab-content">
+                    <div class="flex" style="margin-bottom:1rem;">
+                        <button class="btn btn-gold" onclick="showDemoModal('📝 Compose New Message', 'Create and send personalized messages to students, parents, or staff members.')"><i class="fas fa-pen"></i> Compose</button>
+                        <button class="btn" style="background:#e9edf4; border:1px solid var(--border-light); transition:0.3s ease;" onclick="showDemoModal('📥 Refresh Inbox', 'Refresh your message inbox to check for new messages and updates.')"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                    <div class="msg-item">
+                        <div class="left"><i class="fas fa-user-circle"></i><div><strong>Ana Reyes</strong> <span class="text-muted" style="font-size:0.85rem;">— assignment question</span></div></div>
+                        <span class="time">2h ago <button class="btn btn-sm" style="padding:0.2rem 1rem; background:#e9edf4; border:none; border-radius:40px; cursor:pointer; margin-left:8px; transition:0.3s ease;" onclick="showDemoModal('💬 Reply to Ana Reyes', 'Send a reply to Ana Reyes regarding her assignment question.')">Reply</button></span>
+                    </div>
+                    <div class="msg-item">
+                        <div class="left"><i class="fas fa-user-circle"></i><div><strong>Admin</strong> <span class="text-muted" style="font-size:0.85rem;">— faculty meeting reminder</span></div></div>
+                        <span class="time">1d ago <button class="btn btn-sm" style="padding:0.2rem 1rem; background:#e9edf4; border:none; border-radius:40px; cursor:pointer; margin-left:8px; transition:0.3s ease;" onclick="showDemoModal('💬 Reply to Admin', 'Send a reply to Admin regarding the faculty meeting reminder.')">Reply</button></span>
+                    </div>
+                    <div class="msg-item">
+                        <div class="left"><i class="fas fa-user-circle"></i><div><strong>Carlos Gomez</strong> <span class="text-muted" style="font-size:0.85rem;">— grade inquiry</span></div></div>
+                        <span class="time">3d ago <button class="btn btn-sm" style="padding:0.2rem 1rem; background:#e9edf4; border:none; border-radius:40px; cursor:pointer; margin-left:8px; transition:0.3s ease;" onclick="showDemoModal('💬 Reply to Carlos Gomez', 'Send a reply to Carlos Gomez regarding his grade inquiry.')">Reply</button></span>
+                    </div>
+                    <div class="msg-item">
+                        <div class="left"><i class="fas fa-user-circle"></i><div><strong>Rosa Lim</strong> <span class="text-muted" style="font-size:0.85rem;">— submitted assignment</span></div></div>
+                        <span class="time">5d ago <button class="btn btn-sm" style="padding:0.2rem 1rem; background:#e9edf4; border:none; border-radius:40px; cursor:pointer; margin-left:8px; transition:0.3s ease;" onclick="showDemoModal('💬 Reply to Rosa Lim', 'Send a reply to Rosa Lim regarding her submitted assignment.')">Reply</button></span>
+                    </div>
+                </div>
+            </div>
+			
+			
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> News & Announcements</h2>
+            <div class="news-grid">
+                <div class="news-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-bullhorn"></i> News</h3>
+                        <span class="count-badge">1</span>
+                    </div>
+
+                    <div class="news-card" onclick="showDemoModal('📰 News Article', 'Full article content would appear here for: GaraniePirates > Teaching Essentials Build')">
+                        <div class="news-header">
+                            <span class="news-title">Pirater > Teaching Essentials Build</span>
+                            <span class="news-tag">Event</span>
+                        </div>
+                        <div class="news-meta">
+                            <span><i class="fas fa-user"></i> <span class="author">Pirater</span></span>
+                            <span><i class="fas fa-clock"></i> <span class="date">May 25, 2:15 pm</span></span>
+                        </div>
+                        <div class="news-excerpt">Thank you to everyone who has attended the Understanding Teaching Essentials workshop...</div>
+                    </div>
+
+				</div>
+
+                <div class="news-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-list"></i> Announcements</h3>
+                        <span class="count-badge">3</span>
+                    </div>
+
+                    <ul class="announcements-list">                       
+						<li onclick="showDemoModal('📢 Announcement', 'Thank you to everyone who has attended the Teaching Essentials workshop.')">
+                            <span class="bullet"></span>
+                            <span class="title">Thank you to everyone who has attended.</span>
+                            <span class="date-tag">2d ago</span>
+                        </li>
+                        <li onclick="showDemoModal('📢 Announcement', 'FIC Advisory: LAST DAY OF CREDENTIAL SUBMISSION is on June 15, 2026.')">
+                            <span class="bullet"></span>
+                            <span class="title">FIC Advisory: LAST DAY OF CREDENT.</span>
+                            <span class="date-tag">4d ago</span>
+                        </li>
+                        <li onclick="showDemoModal('📢 Announcement', 'Teaching Essentials: Building Strong Foundations for Effective Instruction.')">
+                            <span class="bullet"></span>
+                            <span class="title">Teaching Essentials: Building Strong ...</span>
+                            <span class="date-tag">1w ago</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+</br></br>
+        <div id="page-events" class="page-section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> School Events</h2>
+            <p class="text-muted" style="text-align:center; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">Memorable events and activities at Cieverose College</p>
+            <div class="course-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.8rem;">
+                <div class="course-card" style="text-align:center; padding:2rem;">
+                    <div class="icon" style="font-size:2.5rem; color:var(--gold); margin-bottom:0.8rem;"><i class="fas fa-music"></i></div>
+                    <h4>JS Prom</h4>
+                    <p>Annual Junior-Senior Promenade — a night of elegance and celebration.</p>
+                </div>
+                <div class="course-card" style="text-align:center; padding:2rem;">
+                    <div class="icon" style="font-size:2.5rem; color:var(--gold); margin-bottom:0.8rem;"><i class="fas fa-hiking"></i></div>
+                    <h4>Field Trips</h4>
+                    <p>Educational trips and outdoor learning experiences.</p>
+                </div>
+                <div class="course-card" style="text-align:center; padding:2rem;">
+                    <div class="icon" style="font-size:2.5rem; color:var(--gold); margin-bottom:0.8rem;"><i class="fas fa-running"></i></div>
+                    <h4>Sportsfest</h4>
+                    <p>Annual sports competition promoting teamwork and healthy competition.</p>
+                </div>
+                <div class="course-card" style="text-align:center; padding:2rem;">
+                    <div class="icon" style="font-size:2.5rem; color:var(--gold); margin-bottom:0.8rem;"><i class="fas fa-globe-asia"></i></div>
+                    <h4>Cultural Events</h4>
+                    <p>Celebrating diversity and cultural heritage through performances and festivals.</p>
+                </div>
+            </div>
+        </div>
+
+</br></br>
+        <div id="page-contact" class="page-section">
+            <h2 class="section-title"><i class="fas fa-phone"></i> Contact Us</h2>
+            <p class="text-muted" style="text-align:center; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">We'd love to hear from you. Reach out for inquiries or visit our campus.</p>
+            <div class="stats-row">
+                <div class="stat-box"><span class="num"><i class="fas fa-map-marker-alt" style="color:var(--gold); font-size:1.5rem;"></i></span><span class="label">Lot 4 Block 51(1644) Ilang-Ilang St., Camarin, Caloocan City</span></div>
+                <div class="stat-box"><span class="num"><i class="fas fa-phone-alt" style="color:var(--gold); font-size:1.5rem;"></i></span><span class="label">+63 (917) 148-5067<br>+63 (917) 676-9200</span></div>
+                <div class="stat-box"><span class="num"><i class="fas fa-clock" style="color:var(--gold); font-size:1.5rem;"></i></span><span class="label">Mon-Fri: 8AM-5PM<br>Sat: 9AM-12PM</span></div>
+            </div>
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="https://www.facebook.com/profile.php?id=100069140122435" target="_blank" class="btn btn-gold" style="display:inline-flex;">
+                    <i class="fab fa-facebook"></i> Visit Our Facebook Page
+                </a>
+            </div>
+        </div>
+
+    </div>
+	
+    <div class="flyout-overlay" id="flyoutOverlay" onclick="toggleFlyout()"></div>
+    <div class="flyout-menu" id="flyoutMenu">
+        <div class="flyout-header">
+            <h3><i class="fas fa-cog"></i> Settings</h3>
+            <button class="flyout-close" onclick="toggleFlyout()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="settings-group">
+            <label for="themeSelectFlyout">Theme</label>
+            <select id="themeSelectFlyout">
+                <option value="light">Light (default)</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+
+        <div class="settings-group">
+            <label for="langSelectFlyout">Language</label>
+            <select id="langSelectFlyout">
+                <option value="en">English</option>
+                <option value="fil">Filipino</option>
+            </select>
+        </div>
+
+        <div class="settings-actions">
+            <button class="btn btn-gold" onclick="saveSettingsFlyout()"><i class="fas fa-save"></i> Save</button>
+            <button class="btn" style="background:#e9edf4; border:1px solid var(--border-light);" onclick="resetSettingsFlyout()"><i class="fas fa-undo"></i> Reset</button>
+        </div>
+
+        <div id="settingsStatusFlyout" style="margin-top:1rem; padding:0.8rem; border-radius:10px; display:none;"></div>
+    </div>
+
+    <div class="modal-overlay" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div style="display:flex; align-items:center;">
+                    <span class="modal-icon" id="modalIcon"><i class="fas fa-info-circle"></i></span>
+                    <h3 id="modalTitle">Demo Function</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closeDemoModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-badge"><i class="fas fa-code"></i> DEMO MODE</div>
+                <p id="modalMessage">This is a demonstration of the feature. In the full version, this would perform the actual action.</p>
+                <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(245, 179, 66, 0.08); border-radius: 10px; border-left: 3px solid var(--gold);">
+                    <small style="color: var(--text-muted);"><i class="fas fa-lightbulb" style="color: var(--gold);"></i> This is a demo preview. All functionality is simulated for demonstration purposes.</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal btn-modal-secondary" onclick="closeDemoModal()">Close</button>
+                <button class="btn-modal btn-modal-primary" onclick="closeDemoModal()"><i class="fas fa-check"></i> Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMessage">Saved!</span></div>
+
+    <div class="footer">
+        <p><i class="fas fa-graduation-cap" style="color:var(--gold);"></i> Cieverose College, Inc. &copy; 2025</p>
+        <p style="margin-top:0.5rem;">
+            <a href="#" data-page="home">Home</a>
+            <a href="#" data-page="library">Library</a>
+            <a href="#" data-page="programs">Programs</a>
+            <a href="#" data-page="events">Events</a>
+            <a href="#" data-page="contact">Contact</a>
+            <a onclick="toggleFlyout()">Settings</a>
+            <a href="https://www.facebook.com/profile.php?id=100069140122435" target="_blank">Facebook</a>
+        </p>
+    </div>
+
+    <script>
+        const coursesData = [
+            { id: 1, title: 'ICT 101 – Programming', icon: 'fa-code', badge: 'ICT', students: 32, schedule: 'MWF 10:00', desc: 'Python, Java, and problem-solving fundamentals.', progress: '8/12 modules', instructor: 'Teacher' },
+            { id: 2, title: 'HE 201 – Cookery & Baking', icon: 'fa-utensils', badge: 'HE', students: 28, schedule: 'TTh 1:30', desc: 'Pastry, bread, and food service techniques.', progress: '5/8 modules', instructor: 'Chef Maria' },
+            { id: 3, title: 'ABM 301 – Business Finance', icon: 'fa-chart-line', badge: 'ABM', students: 26, schedule: 'MWF 2:00', desc: 'Financial analysis, budgeting, and investment.', progress: '10/12 modules', instructor: 'Mr. Reyes' },
+            { id: 4, title: 'HUMSS 101 – Creative Writing', icon: 'fa-book-reader', badge: 'HUMSS', students: 22, schedule: 'TTh 9:30', desc: 'Fiction, poetry, and non-fiction workshops.', progress: '4/7 modules', instructor: 'Dr. Santos' },
+            { id: 5, title: 'GAS 102 – General Mathematics', icon: 'fa-calculator', badge: 'GAS', students: 16, schedule: 'MWF 11:00', desc: 'Algebra, statistics, and applied math.', progress: '6/10 modules', instructor: 'Prof. Lim' }
+        ];
+        let courseCounter = 6;
+
+  const translations = {
+    en: {
+      dashboard: 'Dashboard',
+      mycourses: 'My Courses',
+      students: 'Students',
+      calendar: 'Calendar',
+      settings: 'Settings',
+      activeCourses: 'Active Courses',
+      studentsLabel: 'Students',
+      pendingAssignments: 'Pending Assignments',
+      avgCompletion: 'Avg. Completion',
+      recentActivity: 'Recent Activity',
+      quickActions: 'Quick Actions',
+      myCourses: 'My Courses',
+      calendarLabel: 'Calendar',
+      settingsLabel: 'Settings',
+      searchStudents: 'Search students...',
+      messageAll: 'Message All',
+      addEvent: 'Add Event',
+      today: 'Today',
+      midterm: 'Midterm',
+      holiday: 'Holiday',
+      theme: 'Theme',
+      language: 'Language',
+      light: 'Light (default)',
+      dark: 'Dark',
+      english: 'English',
+      filipino: 'Filipino',
+      spanish: 'Spanish',
+      saveSettings: 'Save Settings',
+      resetDefaults: 'Reset to Defaults',
+      settingsSaved: 'Settings saved successfully!',
+      settingsReset: 'Settings reset to defaults.',
+      manage: 'Manage',
+      addNewCourse: 'Add New Course',
+      createNewSubject: 'Create a new subject'
+    },
+    fil: {
+      dashboard: 'Dashboard',
+      mycourses: 'Aking mga Kurso',
+      students: 'Mga Mag-aaral',
+      calendar: 'Kalendaryo',
+      settings: 'Mga Setting',
+      activeCourses: 'Mga Aktibong Kurso',
+      studentsLabel: 'Mga Mag-aaral',
+      pendingAssignments: 'Mga Nakabinbin na Takdang-aralin',
+      avgCompletion: 'Average na Pagkumpleto',
+      recentActivity: 'Kamakailang Aktibidad',
+      quickActions: 'Mabilis na Aksyon',
+      myCourses: 'Aking mga Kurso',
+      calendarLabel: 'Kalendaryo',
+      settingsLabel: 'Mga Setting',
+      searchStudents: 'Maghanap ng mag-aaral...',
+      messageAll: 'Magpadala ng Mensahe sa Lahat',
+      addEvent: 'Magdagdag ng Event',
+      today: 'Ngayon',
+      midterm: 'Midterm',
+      holiday: 'Bakasyon',
+      theme: 'Tema',
+      language: 'Wika',
+      light: 'Maliwanag (default)',
+      dark: 'Madilim',
+      english: 'Ingles',
+      filipino: 'Filipino',
+      spanish: 'Espanyol',
+      saveSettings: 'I-save ang Setting',
+      resetDefaults: 'I-reset sa Default',
+      settingsSaved: 'Matagumpay na na-save ang mga setting!',
+      settingsReset: 'Na-reset sa default ang mga setting.',
+      manage: 'Pamahalaan',
+      addNewCourse: 'Magdagdag ng Bagong Kurso',
+      createNewSubject: 'Lumikha ng bagong asignatura'
+    }
+  };
+
+  let currentLang = 'en';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('cieverose_lang', lang);
+    updatePageTexts();
+  }
+
+  function updatePageTexts() {
+    const t = translations[currentLang] || translations.en;
+
+    const statLabels = document.querySelectorAll('.stat-box .label');
+    if (statLabels.length >= 4) {
+      statLabels[0].textContent = t.activeCourses;
+      statLabels[1].textContent = t.studentsLabel;
+      statLabels[2].textContent = t.pendingAssignments;
+      statLabels[3].textContent = t.avgCompletion;
+    }
+        let lastScrollY = 0;
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 1500;
+                const step = Math.max(1, Math.floor(target / 60));
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        return;
+                    }
+                    counter.textContent = current;
+                    requestAnimationFrame(updateCounter);
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                observer.observe(counter);
+            });
+        }
+
+        function toggleFlyout() {
+            const menu = document.getElementById('flyoutMenu');
+            const overlay = document.getElementById('flyoutOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        }
+		
+        function showDemoModal(title, message, icon = 'fa-info-circle') {
+            const modal = document.getElementById('demoModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message || 'This is a demonstration of the feature. In the full version, this would perform the actual action.';
+            document.getElementById('modalIcon').innerHTML = `<i class="fas ${icon}"></i>`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDemoModal() {
+            const modal = document.getElementById('demoModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('demoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDemoModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeDemoModal();
+                if (document.getElementById('flyoutMenu').classList.contains('open')) {
+                    toggleFlyout();
+                }
+            }
+        });
+
+
+        document.querySelectorAll('.footer a[data-page]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                switchPage(this.dataset.page);
+            });
+        });
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = {
+            mycourses: document.getElementById('tab-mycourses'),
+            students: document.getElementById('tab-students'),
+            gradebook: document.getElementById('tab-gradebook'),
+            messages: document.getElementById('tab-messages')
+        };
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                Object.values(tabContents).forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const tabId = this.dataset.tab;
+                if (tabContents[tabId]) tabContents[tabId].classList.add('active');
+            });
+        });
+
+        function renderCourses() {
+            const grid = document.getElementById('courseGrid');
+            let html = '';
+            coursesData.forEach((c, index) => {
+                const delay = index * 0.05;
+                html += `
+                    <div class="course-card" style="animation-delay: ${delay}s;">
+                        <div class="course-top">
+                            <span class="icon"><i class="fas ${c.icon}"></i></span>
+                            <span class="badge">${c.badge}</span>
+                        </div>
+                        <h4>${c.title}</h4>
+                        <div class="course-sub"><i class="fas fa-university"></i> Cieverose College · ${c.instructor}</div>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user"></i> ${c.students} students</span>
+                            <span><i class="far fa-clock"></i> ${c.schedule}</span>
+                        </div>
+                        <div class="course-desc">${c.desc}</div>
+                        <div class="course-footer">
+                            <span class="progress-info"><i class="fas fa-check-circle"></i> ${c.progress}</span>
+                            <button class="btn-manage" onclick="showDemoModal('📖 Manage Course', 'Manage course settings, modules, and student enrollment for ${c.title}.')">Manage</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += `
+                <div class="add-card" onclick="showDemoModal('➕ Create New Course', 'Create a new course with custom modules, schedule, and student enrollment.')">
+                    <i class="fas fa-plus-circle"></i>
+                    <h4>Add New Course</h4>
+                    <span>Create a new subject</span>
+                </div>
+            `;
+            grid.innerHTML = html;
+        }
+
+        document.getElementById('studentSearch')?.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            document.querySelectorAll('#studentTableBody tr').forEach(row => {
+                const name = row.querySelector('td')?.textContent?.toLowerCase() || '';
+                row.style.display = name.includes(query) ? '' : 'none';
+            });
+        });
+
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.className = 'toast show';
+            toast.style.borderLeftColor = isSuccess ? '#27ae60' : '#e74c3c';
+            toast.querySelector('i').className = isSuccess ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function loadSettingsFlyout() {
+            const theme = localStorage.getItem('cieverose_theme') || 'light';
+            const lang = localStorage.getItem('cieverose_lang') || 'en';
+            document.getElementById('themeSelectFlyout').value = theme;
+            document.getElementById('langSelectFlyout').value = lang;
+            if (theme === 'dark') document.body.classList.add('dark-mode');
+        }
+
+        function saveSettingsFlyout() {
+            const theme = document.getElementById('themeSelectFlyout').value;
+            const lang = document.getElementById('langSelectFlyout').value;
+            localStorage.setItem('cieverose_theme', theme);
+            localStorage.setItem('cieverose_lang', lang);
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+            const status = document.getElementById('settingsStatusFlyout');
+            status.style.display = 'block';
+            status.style.background = '#d4edda';
+            status.style.color = '#155724';
+            status.style.border = '1px solid #c3e6cb';
+            status.style.padding = '0.8rem';
+            status.style.borderRadius = '10px';
+            status.innerHTML = `<i class="fas fa-check-circle"></i> Settings saved! Theme: ${theme}, Language: ${lang}`;
+            showToast('✅ Settings saved!', true);
+            setTimeout(() => {
+                status.style.display = 'none';
+                if (document.getElementById('flyoutMenu').classList.contains('open')) {
+                    toggleFlyout();
+                }
+            }, 2000);
+        }
+
+    const quickBtns = document.querySelectorAll('.quick-actions .btn, .btn-primary, .btn-gold, .btn-outline');
+    // Just update known ones
+    document.querySelectorAll('.btn-primary, .btn-gold, .btn-outline').forEach(btn => {
+      const text = btn.textContent.trim();
+      if (text.includes('My Courses') || text.includes('Aking mga Kurso') || text.includes('Mis Cursos')) {
+        btn.innerHTML = `<i class="fas fa-book"></i> ${t.myCourses}`;
+      } else if (text.includes('Students') || text.includes('Mga Mag-aaral') || text.includes('Estudiantes')) {
+        btn.innerHTML = `<i class="fas fa-users"></i> ${t.studentsLabel}`;
+      } else if (text.includes('Calendar') || text.includes('Kalendaryo')) {
+        btn.innerHTML = `<i class="fas fa-calendar"></i> ${t.calendarLabel}`;
+      } else if (text.includes('Settings') || text.includes('Mga Setting') || text.includes('Configuración')) {
+        btn.innerHTML = `<i class="fas fa-cog"></i> ${t.settingsLabel}`;
+      }
+    });
+
+    const settingsLabels = document.querySelectorAll('.settings-group label');
+    if (settingsLabels.length >= 2) {
+      settingsLabels[0].textContent = t.theme;
+      settingsLabels[1].textContent = t.language;
+    }
+
+    const themeSelect = document.getElementById('themeSelect');
+    if (themeSelect) {
+      themeSelect.options[0].text = t.light;
+      themeSelect.options[1].text = t.dark;
+    }
+
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) {
+      langSelect.options[0].text = t.english;
+      langSelect.options[1].text = t.filipino;
+      langSelect.options[2].text = t.spanish;
+    }
+
+    const settingsBtns = document.querySelectorAll('.settings-actions .btn');
+    if (settingsBtns.length >= 2) {
+      settingsBtns[0].innerHTML = `<i class="fas fa-save"></i> ${t.saveSettings}`;
+      settingsBtns[1].innerHTML = `<i class="fas fa-undo"></i> ${t.resetDefaults}`;
+    }
+
+        function resetSettingsFlyout() {
+            document.getElementById('themeSelectFlyout').value = 'light';
+            document.getElementById('langSelectFlyout').value = 'en';
+            localStorage.setItem('cieverose_theme', 'light');
+            localStorage.setItem('cieverose_lang', 'en');
+            document.body.classList.remove('dark-mode');
+            const status = document.getElementById('settingsStatusFlyout');
+            status.style.display = 'block';
+            status.style.background = '#fff3cd';
+            status.style.color = '#856404';
+            status.style.border = '1px solid #ffeeba';
+            status.style.padding = '0.8rem';
+            status.style.borderRadius = '10px';
+            status.innerHTML = `<i class="fas fa-undo"></i> Settings reset to defaults.`;
+            showToast('🔄 Settings reset', true);
+            setTimeout(() => {
+                status.style.display = 'none';
+                if (document.getElementById('flyoutMenu').classList.contains('open')) {
+                    toggleFlyout();
+                }
+            }, 2000);
+        }
+
+        loadSettingsFlyout();
+        renderCourses();
+
+        document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+        document.getElementById('page-home').classList.add('active');
+
+        setTimeout(animateCounters, 500);
+
+        console.log('Cieverose College loaded.');
+    </script>
+
+</body>
+</html>
