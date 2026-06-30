@@ -1,96 +1,1487 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#1a5f9a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Cieverose College">
+    <meta name="description" content="Cieverose College - Providing quality education since 2010">
     <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cieverose College, Inc. | Quality Education</title>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Skip Link for Keyboard Users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation Bar -->
+    <nav aria-label="Main navigation" id="main-nav">
+		<div class="nav-container">
+			<a href="index.html" class="logo">
+				<img src="logo.png" alt="Cieverose College Logo" style="height: 50px;">
+				<span>Cieverose College, Inc.</span>
+			</a>
+			<button class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle menu">
+				<i class="fas fa-bars"></i>
+			</button>
+			<ul id="nav-menu">
+				<li><a href="#home" class="active"><i class="fas fa-home"></i> Home__</a></li>
+				<li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+				<li><a href="#library"><i class="fas fa-book-open"></i> Library</a></li>
+				<li><a href="#programs"><i class="fas fa-book"></i> Programs</a></li>
+				<li><a href="#events"><i class="fas fa-calendar-alt"></i> Events</a></li>
+				<li><a href="#contact"><i class="fas fa-phone"></i> Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" role="banner">
+        <div class="hero-content">
+            <h1>Empowering Futures at Cieverose College, Inc.</h1>
+            <p>Providing quality education that combines academic excellence with practical skills development since 2010</p>
+            <div class="hero-buttons">
+                <a href="#programs" class="cta-button">
+                    <i class="fas fa-book-open"></i> Explore Programs
+                </a>
+                <a href="#contact" class="cta-button secondary">
+                    <i class="fas fa-phone-alt"></i> Contact Us
+                </a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down" aria-label="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" id="main-content">
+        <!-- Welcome Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About Our School</h2>
+            <p class="intro-text">
+                At Cieverose College, we are committed to nurturing well-rounded individuals through a balanced approach to education that combines rigorous academics with practical life skills development.
+            </p>
+            
+            <div class="mission-vision-grid">
+                <article class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide quality education that prepares students for success in a changing world through innovative teaching and a supportive community.</p>
+                </article>
+                
+                <article class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be a leading educational institution that nurtures lifelong learners and responsible global citizens.</p>
+                </article>
+                
+                <article class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Our Philosophy</h3>
+                    <p class="philosophy">"To serve God is to Serve Others."</p>
+                </article>
+            </div>
+            
+            <!-- School Goals -->
+            <article class="mt-xl">
+                <h3><i class="fas fa-flag text-accent"></i> SCHOOL GOALS</h3>
+                <ul class="school-goals">
+                    <li>Provide high-quality graduates that meet industry standards</li>
+                    <li>Foster holistic student development addressing physical, emotional, spiritual, intellectual, and life skills</li>
+                    <li>Empower youth to become responsible, productive, and contributing members of their communities</li>
+                    <li>Cultivate a learning environment rooted in strong faith, integrity, and respect for diversity</li>
+                    <li>Promote excellence and hard work among students, faculty, and staff</li>
+                    <li>Ensure continuous improvement in educational programs and services to maintain leadership in education</li>
+                    <li>Encourage love, respect, and understanding within the school community to build a harmonious environment</li>
+                    <li>Conduct research and extension services focused on community development</li>
+                </ul>
+            </article>
+            
+            <!-- Core Values -->
+            <article class="mt-xl">
+                <h3><i class="fas fa-star text-accent"></i> OUR CORE VALUES, OUR SHIELD</h3>
+                <div class="core-values-grid">
+                    <div class="core-value-card" tabindex="0">
+                        <div class="core-value-header">
+                            <span class="core-value-letter">S</span>
+                            <h4>Strong Faith</h4>
+                        </div>
+                        <div class="core-value-content">
+                            <p>A foundation of spiritual strength and moral integrity that guides personal and communal growth. Strong faith nurtures resilience, hope, and ethical decision-making, empowering students to face challenges with confidence and purpose.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="core-value-card" tabindex="0">
+                        <div class="core-value-header">
+                            <span class="core-value-letter">H</span>
+                            <h4>Hard Work</h4>
+                        </div>
+                        <div class="core-value-content">
+                            <p>The commitment to diligence, perseverance, and consistent effort in all academic and personal endeavors. Hard work instills discipline and a strong work ethic, enabling students to achieve excellence and overcome obstacles.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="core-value-card" tabindex="0">
+                        <div class="core-value-header">
+                            <span class="core-value-letter">I</span>
+                            <h4>Integrity</h4>
+                        </div>
+                        <div class="core-value-content">
+                            <p>Upholding honesty, transparency, and ethical behavior in all actions. Integrity fosters trustworthiness and accountability, essential for building character and maintaining a respectful academic and social environment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="core-value-card" tabindex="0">
+                        <div class="core-value-header">
+                            <span class="core-value-letter">E</span>
+                            <h4>Excellence</h4>
+                        </div>
+                        <div class="core-value-content">
+                            <p>Striving for the highest standards in education, innovation, and service. Excellence motivates continuous improvement, creativity, and the pursuit of quality in all aspects of learning and community engagement.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="core-value-card" tabindex="0">
+                        <div class="core-value-header">
+                            <span class="core-value-letter">L</span>
+                            <h4>Love</h4>
+                        </div>
+                        <div class="core-value-content">
+                            <p>Cultivating compassion, empathy, and genuine care for others. Love promotes harmonious relationships, social responsibility, and a supportive community where everyone feels valued and respected.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="core-value-card" tabindex="0">
+                        <div class="core-value-header">
+                            <span class="core-value-letter">D</span>
+                            <h4>Diversity & Deference</h4>
+                        </div>
+                        <div class="core-value-content">
+                            <p>Valuing the richness of different cultures, ideas, and perspectives while showing respect and humility towards others. Embracing diversity and practicing deference foster inclusivity, collaboration, and mutual understanding in a globalized world.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center"><strong>This SHIELD framework serves as a guiding compass for students, faculty, and staff at Cieverose College, aligning with its mission to empower youth through holistic education and character formation.</strong></p>
+            </article>
+        </section>
+        
+        <!-- Updates Section -->
+        <section id="updates" class="section bg-section">
+            <h2 class="text-center">Campus Updates</h2>
+            <p class="text-center mb-xl">Stay informed with the latest news and events</p>
+            
+            <div class="dynamic-content-grid">
+                <!-- Announcements Widget -->
+                <div class="widget announcements-widget">
+                    <div class="widget-header">
+                        <div class="widget-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Announcements</h3>
+                    </div>
+                    <div id="announcements-container">
+                        <!-- Announcements will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Events Widget -->
+                <div class="widget events-widget">
+                    <div class="widget-header">
+                        <div class="widget-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Upcoming Events</h3>
+                    </div>
+                    <div id="events-container">
+                        <!-- Events will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- News Widget -->
+                <div class="widget news-widget">
+                    <div class="widget-header">
+                        <div class="widget-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>News & Updates</h3>
+                    </div>
+                    <div id="news-container">
+                        <!-- News will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+		
+		
+		
+		
+		
+		<!-- Calendar Section -->
+		<section id="calendar" class="section calendar-section">
+			<h2 class="text-center">Academic Calendar</h2>
+			<p class="text-center mb-xl">Important dates for SY 2025-2026</p>
+			
+			<div class="calendar-container">
+				<div class="calendar-header">
+					<button id="prev-month" class="calendar-nav" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
+					<h3 id="current-month-year">July 2025</h3>
+					<button id="next-month" class="calendar-nav" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
+				</div>
+				<div class="calendar-grid" id="calendar-days">
+					<!-- Calendar will be generated by JavaScript -->
+				</div>
+				<div class="calendar-legend">
+					<div class="legend-item">
+						<span class="legend-color legend-today"></span>
+						<span>Today</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-color legend-academic"></span>
+						<span>Academic</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-color legend-exam"></span>
+						<span>Exam</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-color legend-holiday"></span>
+						<span>Holiday</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-color legend-event"></span>
+						<span>Event</span>
+					</div>
+					<div class="legend-item">
+						<span class="legend-color legend-selected"></span>
+						<span>Selected</span>
+					</div>
+				</div>
+				<div class="calendar-events" id="calendar-events">
+					<h4>Key Dates:</h4>
+					<ul class="key-dates-list" id="key-dates-list">
+						<!-- Events will be populated by JavaScript -->
+					</ul>
+				</div>
+			</div>
+		</section>
+        
+        <!-- Programs Section -->
+        <section id="programs" class="section bg-section">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="programs">
+                <!-- Program Cards -->
+                <!-- <div class="program-card"> -->
+                    <!-- <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Elementary Program"> -->
+                    <!-- <div class="program-card-content"> -->
+                        <!-- <h3><i class="fas fa-pencil-alt"></i> Elementary Program</h3> -->
+                        <!-- <p>Our elementary program focuses on building strong foundations in literacy, numeracy, and social skills.</p> -->
+                        <!-- <ul> -->
+                            <!-- <li>Grades 1-6</li> -->
+                            <!-- <li>Integrated curriculum</li> -->
+                            <!-- <li>Specialized art and music classes</li> -->
+                        <!-- </ul> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+                <!-- Senior High School Programs -->
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ICT students working on computers">
+                    <div class="program-card-content">
+                        <h3><i class="fas fa-laptop-code"></i> Information and Communication Technology (ICT)</h3>
+                        <p>Prepares students for careers in programming, animation, and computer systems servicing.</p>
+                        <ul>
+                            <li>Career paths: Programmer, Web Developer, IT Specialist</li>
+                            <li>Specialized subjects: Programming, Animation, Computer Systems Servicing</li>
+                            <li>NC II Certification opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HE students cooking in kitchen">
+                    <div class="program-card-content">
+                        <h3><i class="fas fa-utensils"></i> Home Economics (HE)</h3>
+                        <p>Focuses on livelihood skills in cookery, bread and pastry production, food and beverage services, tourism, and hospitality management.</p>
+                        <ul>
+                            <li>Career paths: Chef, Baker, Hotel/Restaurant Manager</li>
+                            <li>Specialized subjects: Cookery, Food and Beverage Services, Tourism</li>
+                            <li>Hands-on training in fully equipped kitchen labs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HUMSS students in discussion">
+                    <div class="program-card-content">
+                        <h3><i class="fas fa-book-reader"></i> Humanities and Social Sciences (HUMSS)</h3>
+                        <p>Designed for students interested in liberal arts, education, journalism, and social sciences.</p>
+                        <ul>
+                            <li>Career paths: Teacher, Lawyer, Journalist, Psychologist</li>
+                            <li>Specialized subjects: Creative Writing, Social Sciences, Philosophy</li>
+                            <li>Strong preparation for college degrees in arts and humanities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ABM students analyzing data">
+                    <div class="program-card-content">
+                        <h3><i class="fas fa-chart-line"></i> Accountancy, Business and Management (ABM)</h3>
+                        <p>Focuses on business principles, financial management, and entrepreneurship.</p>
+                        <ul>
+                            <li>Career paths: Accountant, Entrepreneur, Business Manager</li>
+                            <li>Specialized subjects: Business Math, Finance, Marketing</li>
+                            <li>Real-world business simulations and case studies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="GAS students in classroom">
+                    <div class="program-card-content">
+                        <h3><i class="fas fa-graduation-cap"></i> General Academic Strand (GAS)</h3>
+                        <p>Designed for students who are undecided on their college path, offering a broad range of subjects.</p>
+                        <ul>
+                            <li>Career paths: College preparation for any degree program</li>
+                            <li>Specialized subjects: Humanities, Social Sciences, Business, Science</li>
+                            <li>Flexible curriculum for diverse interests</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Library Section -->
+		
+        <section id="library" class="library-section section">
+			<div class="container">
+				<div class="library-header">
+					<img src="logo.png" alt="Cieverose College Logo" class="library-logo">
+					<div>
+						<h2>Library Collections</h2>
+						<p>Explore our extensive collection of academic resources</p>
+					</div>
+				</div>
+				
+				
+				
+				<!-- Professional Journals Accordion -->
+				<div class="accordion-item" data-collection="journals">
+					<div class="accordion-header">
+						<span><i class="fas fa-book text-accent"></i> Professional Journals Collection</span>
+						<span class="item-count">10 items</span>
+					</div>
+					<div class="accordion-content">
+						<div class="accordion-content-inner">
+							<div class="table-container">
+								<table class="data-table">
+									<thead>
+										<tr>
+											<th data-sort="title">Title / Product Name <i class="fas fa-sort"></i></th>
+											<th data-sort="author">Author / Brand <i class="fas fa-sort"></i></th>
+											<th data-sort="year">Year <i class="fas fa-sort"></i></th>
+											<th data-sort="publisher">Publisher / Brand <i class="fas fa-sort"></i></th>
+											<th>Notes</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Prayer Journal Konek 5.5x8 Inches, 128 Pages</td>
+											<td>National Book Store</td>
+											<td>2024</td>
+											<td>National Book Store</td>
+											<td>Classic/fancy journal</td>
+										</tr>
+										<tr>
+											<td>Gratitude Journal Ang Bible Pinoy Version 5.5x8</td>
+											<td>National Book Store</td>
+											<td>2024</td>
+											<td>National Book Store</td>
+											<td>Themed journal (faith-based)</td>
+										</tr>
+										<tr>
+											<td>Kozo Journal Notebook A4 (various colors)</td>
+											<td>National Book Store</td>
+											<td>2023</td>
+											<td>National Book Store</td>
+											<td>Fancy journal with textured cover</td>
+										</tr>
+										<tr>
+											<td>Little Birdie Paintable Canvas Soft Cover A5 Dotted 80 Pages</td>
+											<td>Little Birdie</td>
+											<td>2023</td>
+											<td>Little Birdie</td>
+											<td>Fancy/themed journal</td>
+										</tr>
+										<tr>
+											<td>Little Birdie Paintable Canvas Cover A6 90gsm 120 Pages</td>
+											<td>Little Birdie</td>
+											<td>2023</td>
+											<td>Little Birdie</td>
+											<td>Fancy/themed journal</td>
+										</tr>
+										<tr>
+											<td>2025 Daily Planner with Foil Stamping 14.8x21cm</td>
+											<td>Best Buy</td>
+											<td>2024</td>
+											<td>Best Buy (NBS brand)</td>
+											<td>Themed planner/journal</td>
+										</tr>
+										<tr>
+											<td>Best Buy Budget & Saver Planner 14.8x20.5 cm 60 Sheets</td>
+											<td>Best Buy</td>
+											<td>2024</td>
+											<td>Best Buy (NBS brand)</td>
+											<td>Classic planner</td>
+										</tr>
+										<tr>
+											<td>2025 Monthly Planner Pad 11x8.5 inches, Garden</td>
+											<td>National Book Store</td>
+											<td>2024</td>
+											<td>National Book Store</td>
+											<td>Themed planner</td>
+										</tr>
+										<tr>
+											<td>Undated Weekly Planner 4x1 inches 54 Sheets, Beige</td>
+											<td>National Book Store</td>
+											<td>2024</td>
+											<td>National Book Store</td>
+											<td>Classic planner</td>
+										</tr>
+										<tr>
+											<td>Undated Weekly Horizontal Planner 8x6 inches, Lime</td>
+											<td>National Book Store</td>
+											<td>2024</td>
+											<td>National Book Store</td>
+											<td>Themed planner</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Periodicals Accordion -->
+				<div class="accordion-item" data-collection="periodicals">
+					<div class="accordion-header">
+						<span><i class="fas fa-newspaper text-accent"></i> Periodicals Collection</span>
+						<span class="item-count">20 items</span>
+					</div>
+					<div class="accordion-content">
+						<div class="accordion-content-inner">
+							<div class="table-container">
+								<table class="data-table">
+									<thead>
+										<tr>
+											<th data-sort="number">No. <i class="fas fa-sort"></i></th>
+											<th data-sort="title">Title <i class="fas fa-sort"></i></th>
+											<th data-sort="publisher">Publisher / Brand <i class="fas fa-sort"></i></th>
+											<th data-sort="year">Year / Issue Date <i class="fas fa-sort"></i></th>
+											<th>Notes</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>Mega Magazine</td>
+											<td>Mega Publishing</td>
+											<td>Feb 2025</td>
+											<td>Local lifestyle & culture</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Rising Tigers: The Nation Builders in Asia</td>
+											<td>Rising Tigers Media</td>
+											<td>2024</td>
+											<td>Regional business & leadership</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Billboard PH Special - Ben and Ben Magazine</td>
+											<td>Billboard Philippines</td>
+											<td>2024</td>
+											<td>Entertainment & music</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>Vogue Magazine</td>
+											<td>Condé Nast</td>
+											<td>Dec 2023</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>Vogue Magazine</td>
+											<td>Condé Nast</td>
+											<td>Oct 2023</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>Vogue Magazine</td>
+											<td>Condé Nast</td>
+											<td>Sep 2023</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>7</td>
+											<td>Vogue Magazine</td>
+											<td>Condé Nast</td>
+											<td>Jul 2023</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>8</td>
+											<td>Vogue Magazine</td>
+											<td>Condé Nast</td>
+											<td>Jun 2023</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>9</td>
+											<td>Vogue Magazine</td>
+											<td>Condé Nast</td>
+											<td>May 2023</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>10</td>
+											<td>W Korea</td>
+											<td>W Korea Magazine</td>
+											<td>Feb 2022</td>
+											<td>Korean lifestyle & fashion</td>
+										</tr>
+										<tr>
+											<td>11</td>
+											<td>Harper's Bazaar</td>
+											<td>Harper's Bazaar</td>
+											<td>May 2022</td>
+											<td>International fashion</td>
+										</tr>
+										<tr>
+											<td>12</td>
+											<td>National Geographic Kids Almanac</td>
+											<td>National Geographic Society</td>
+											<td>2024</td>
+											<td>Children's science & nature</td>
+										</tr>
+										<tr>
+											<td>13</td>
+											<td>Reader's Digest</td>
+											<td>Reader's Digest Association</td>
+											<td>2023</td>
+											<td>General interest</td>
+										</tr>
+										<tr>
+											<td>14</td>
+											<td>Cosmopolitan</td>
+											<td>Hearst Communications</td>
+											<td>2023</td>
+											<td>Women's lifestyle</td>
+										</tr>
+										<tr>
+											<td>15</td>
+											<td>Esquire</td>
+											<td>Hearst Communications</td>
+											<td>2023</td>
+											<td>Men's lifestyle & culture</td>
+										</tr>
+										<tr>
+											<td>16</td>
+											<td>Time Magazine</td>
+											<td>Time USA</td>
+											<td>2023</td>
+											<td>News & current affairs</td>
+										</tr>
+										<tr>
+											<td>17</td>
+											<td>Newsweek</td>
+											<td>Newsweek LLC</td>
+											<td>2023</td>
+											<td>News & current affairs</td>
+										</tr>
+										<tr>
+											<td>18</td>
+											<td>Sports Illustrated</td>
+											<td>Sports Illustrated</td>
+											<td>2023</td>
+											<td>Sports news & features</td>
+										</tr>
+										<tr>
+											<td>19</td>
+											<td>Entrepreneur</td>
+											<td>Entrepreneur Media</td>
+											<td>2023</td>
+											<td>Business & startups</td>
+										</tr>
+										<tr>
+											<td>20</td>
+											<td>Forbes</td>
+											<td>Forbes Media</td>
+											<td>2023</td>
+											<td>Business & finance</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Filipiniana Accordion -->
+				<div class="accordion-item" data-collection="filipiniana">
+					<div class="accordion-header">
+						<span><i class="fas fa-leaf text-accent"></i> Filipiniana Collection</span>
+						<span class="item-count">7 items</span>
+					</div>
+					<div class="accordion-content">
+						<div class="accordion-content-inner">
+							<div class="table-container">
+								<table class="data-table">
+									<thead>
+										<tr>
+											<th data-sort="title">Title <i class="fas fa-sort"></i></th>
+											<th data-sort="author">Author(s) <i class="fas fa-sort"></i></th>
+											<th data-sort="year">Year <i class="fas fa-sort"></i></th>
+											<th data-sort="publisher">Publisher <i class="fas fa-sort"></i></th>
+											<th>Notes</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Insect Hag and Other Stories</td>
+											<td>Yvette Fernandez</td>
+											<td>2024</td>
+											<td>Anvil Publishing</td>
+											<td>Contemporary Filipino fiction</td>
+										</tr>
+										<tr>
+											<td>Mga Kuwento ni Lola Basyang (New Edition)</td>
+											<td>Severino Reyes (retold by various)</td>
+											<td>2023</td>
+											<td>Adarna House</td>
+											<td>Classic Filipino folktales</td>
+										</tr>
+										<tr>
+											<td>Mga Kwento ni Lola Basyang sa Modernong Panahon</td>
+											<td>Various Authors</td>
+											<td>2022</td>
+											<td>Lampara Books</td>
+											<td>Modern retelling of folklore</td>
+										</tr>
+										<tr>
+											<td>Bayaning Pilipino: Mga Kwento ng Kabayanihan</td>
+											<td>Various Authors</td>
+											<td>2021</td>
+											<td>Anvil Publishing</td>
+											<td>Stories of Filipino heroes</td>
+										</tr>
+										<tr>
+											<td>Tala: Mga Kuwento ng Kababaihan</td>
+											<td>Various Authors</td>
+											<td>2021</td>
+											<td>Ateneo de Manila Press</td>
+											<td>Filipino women's narratives</td>
+										</tr>
+										<tr>
+											<td>Mga Dula sa Panahon ng Pandemya</td>
+											<td>Various Authors</td>
+											<td>2020</td>
+											<td>University of the Philippines Press</td>
+											<td>Filipino plays on pandemic</td>
+										</tr>
+										<tr>
+											<td>Filipino Poetry Today</td>
+											<td>Various Filipino Poets</td>
+											<td>2020</td>
+											<td>De La Salle University Press</td>
+											<td>Contemporary poetry collection</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- List of Books Accordion -->
+				<div class="accordion-item" data-collection="books">
+					<div class="accordion-header">
+						<span><i class="fas fa-book-open text-accent"></i> List of Books</span>
+						<span class="item-count">137 items</span>
+					</div>
+					<div class="accordion-content">
+						<div class="accordion-content-inner">
+							<div class="table-container">
+								<table class="data-table">
+									<thead>
+										<tr>
+											<th data-sort="number">NO <i class="fas fa-sort"></i></th>
+											<th data-sort="author">AUTHOR <i class="fas fa-sort"></i></th>
+											<th data-sort="title">TITLE <i class="fas fa-sort"></i></th>
+											<th data-sort="year">YEAR <i class="fas fa-sort"></i></th>
+											<th data-sort="volume">VOLUME <i class="fas fa-sort"></i></th>
+											<th data-sort="subject">SUBJECT CODE <i class="fas fa-sort"></i></th>
+											<th data-sort="year-sem">Yr & Sem <i class="fas fa-sort"></i></th>
+											<th data-sort="copies">No. of Copies <i class="fas fa-sort"></i></th>
+											<th data-sort="format">Format <i class="fas fa-sort"></i></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>Vistan, Deogracias</td>
+											<td>The Filipino Entrepreneur</td>
+											<td>2023</td>
+											<td>1st Ed</td>
+											<td>ECC 101</td>
+											<td>11</td>
+											<td>6</td>
+											<td>Printed</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Feron, Jose</td>
+											<td>The Greatest Salesman I Know Does Not Sell</td>
+											<td>2022</td>
+											<td>1st Ed</td>
+											<td>ECC 101</td>
+											<td>11</td>
+											<td>6</td>
+											<td>Printed</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Smith, Mark</td>
+											<td>The Entrepreneur's Guide to the Art of War</td>
+											<td>2021</td>
+											<td>1st Ed</td>
+											<td>ECC 101</td>
+											<td>11</td>
+											<td>6</td>
+											<td>Printed</td>
+										</tr>
+										<!-- Sample of additional rows -->
+										<tr>
+											<td>136</td>
+											<td>Garcia, M. L</td>
+											<td>The Self and Identity: A Multidisciplinary Approach</td>
+											<td>2021</td>
+											<td>1st Ed</td>
+											<td>GE1_UTS</td>
+											<td>11</td>
+											<td>10</td>
+											<td>Printed</td>
+										</tr>
+										<tr>
+											<td>137</td>
+											<td>Reyes, J. P</td>
+											<td>Understanding Human Behavior and the Self</td>
+											<td>2022</td>
+											<td>1st Ed</td>
+											<td>GE1_UTS</td>
+											<td>11</td>
+											<td>10</td>
+											<td>Printed</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+		</section>
+		
+		
+		
+		
+		
+		
+		<section id="events" class="section">
+			<div class="container">
+				<h2 class="section-title">School Events</h2>
+				
+				<!-- Past Events Tabs -->
+				<div class="event-tabs">
+					<button class="event-tab active" data-tab="js-prom">JS Prom</button>
+					<button class="event-tab" data-tab="field-trip">Field Trip</button>
+					<button class="event-tab" data-tab="sportsfest">Sportsfest</button>
+					<button class="event-tab" data-tab="cultural">Cultural Events</button>
+				</div>
+				
+				<!-- JS Prom Tab Content -->
+				<div id="js-prom" class="event-content active">
+					<div class="event-carousel">
+						<div class="carousel-container">
+							<div class="carousel-slide">
+								<img src="images/JS/JS2.jpg" alt="JS Prom event showing students in formal attire">
+								<div class="carousel-caption-text">
+									<h3>Annual JS Prom</h3>
+									<p>Students celebrating their memorable night in elegant formal attire</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/JS/JS3.jpg" alt="JS Prom event showing students dancing">
+								<div class="carousel-caption-text">
+									<h3>JS Prom Night</h3>
+									<p>Students enjoying the dance floor at their prom night</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/JS/JS5.jpg" alt="JS Prom event showing group photo">
+								<div class="carousel-caption-text">
+									<h3>Group Photos</h3>
+									<p>Students capturing memories with their friends</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/JS/JS6.jpg" alt="JS Prom event showing decorations">
+								<div class="carousel-caption-text">
+									<h3>Elegant Decorations</h3>
+									<p>Beautifully decorated venue for the prom night</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/JS/JS8.jpg" alt="JS Prom event showing awards ceremony">
+								<div class="carousel-caption-text">
+									<h3>Awards Ceremony</h3>
+									<p>Recognizing students for their achievements</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-nav">
+							<button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+							<button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
+						</div>
+						<div class="carousel-indicators">
+							<div class="carousel-indicator active"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Field Trip Tab Content -->
+				<div id="field-trip" class="event-content">
+					<div class="event-carousel">
+						<div class="carousel-container">
+							<div class="carousel-slide">
+								<img src="images/FT/FT1.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Educational Trips</h3>
+									<p>Students learning outside the classroom</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT2.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT1.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT3.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT4.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT5.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT6.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT7.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT8.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT9.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT12.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/FT/FT2.jpg" alt="Educational field trip">
+								<div class="carousel-caption-text">
+									<h3>Exploring Nature</h3>
+									<p>Students discovering the wonders of nature during educational trips</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-nav">
+							<button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+							<button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
+						</div>
+						<div class="carousel-indicators">
+							<div class="carousel-indicator active"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Sportsfest Tab Content -->
+				<div id="sportsfest" class="event-content">
+					<div class="event-carousel">
+						<div class="carousel-container">
+							<div class="carousel-slide">
+								<img src="images/SF/SF10.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Annual Sportsfest</h3>
+									<p>Students compete in various sports activities to promote teamwork and healthy competition</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF1.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF11.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF2.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF3.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF4.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF5.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF6.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF7.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF8.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/SF/SF9.jpg" alt="Sportsfest basketball game">
+								<div class="carousel-caption-text">
+									<h3>Team Sports</h3>
+									<p>Fostering teamwork and sportsmanship among students</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-nav">
+							<button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+							<button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
+						</div>
+						<div class="carousel-indicators">
+							<div class="carousel-indicator active"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Cultural Events Tab Content -->
+				<div id="cultural" class="event-content">
+					<div class="event-carousel">
+						<div class="carousel-container">
+							<div class="carousel-slide">
+								<img src="images/culture/cultural11.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Performances</h3>
+									<p>Showcasing traditional dances and music</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural1.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural2.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural3.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural4.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural5.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural6.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural7.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural8.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural9.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural10.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural12.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural13.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+							<div class="carousel-slide">
+								<img src="images/culture/cultural5.jfif" alt="Cultural dance performance">
+								<div class="carousel-caption-text">
+									<h3>Cultural Festival</h3>
+									<p>Celebrating diversity and cultural heritage</p>
+								</div>
+							</div>
+						</div>
+						<div class="carousel-nav">
+							<button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+							<button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
+						</div>
+						<div class="carousel-indicators">
+							<div class="carousel-indicator active"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+							<div class="carousel-indicator"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		
+        <!-- About Section -->
+        <section id="about-profile" class="profile-section section">
+            <img src="logo.png" alt="Cieverose College Logo" class="profile-logo">
+            <div class="profile-content">
+                <h2>Why Choose Cieverose College, Inc.?</h2>
+                <p>We provide a nurturing environment that fosters academic excellence, character development, and practical skills to prepare students for success in their chosen fields and in life.</p>
+                
+                <div class="programs mt-lg">
+                    <article class="program-card">
+                        <div class="program-card-content">
+                            <h3><i class="fas fa-award text-accent"></i> Quality Education</h3>
+                            <p>Our curriculum is designed to meet industry standards while fostering critical thinking and practical skills. We maintain small class sizes to ensure personalized attention for each student.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="program-card">
+                        <div class="program-card-content">
+                            <h3><i class="fas fa-users text-accent"></i> Experienced Faculty</h3>
+                            <p>Learn from industry professionals and educators committed to your success. Our faculty members combine academic expertise with real-world experience to provide relevant, engaging instruction.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="program-card">
+                        <div class="program-card-content">
+                            <h3><i class="fas fa-hands-helping text-accent"></i> Holistic Development</h3>
+                            <p>We nurture not just academic growth but also character, leadership, and life skills. Our programs include extracurricular activities, community service, and values formation to develop well-rounded individuals.</p>
+                        </div>
+                    </article>
+                </div>
+                
+                <a href="https://www.facebook.com/profile.php?id=100069140122435" class="profile-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook"></i> Visit Our Facebook Page
+                </a>
+            </div>
+        </section>
+        
+		
+		
+		
+		
+		
+        <!-- Contact Section -->
+		<section id="contact" class="section bg-section">
+			<div class="container">
+				<h2 class="section-title">Contact Us</h2>
+				<p class="text-center mb-xl">We'd love to hear from you. Reach out for inquiries or visit our campus.</p>
+				
+				<div class="contact-grid">
+					<article class="contact-card">
+						<div class="contact-card-content">
+							<div class="contact-icon">
+								<i class="fas fa-map-marker-alt text-accent"></i>
+							</div>
+							<h3>Campus Address</h3>
+							<address>
+								<a href="https://maps.app.goo.gl/8PD8L7VCfyoL6Fca7" 
+								  target="_blank" 
+								  rel="noopener noreferrer"
+								  class="contact-link address-link">
+									<i class="fas fa-map-pin"></i>
+									<span>
+										Lot 4 Block 51(1644) Ilang-Ilang Street<br>
+										Camarin, Caloocan City
+									</span>
+									<i class="fas fa-external-link-alt ml-2"></i>
+								</a>
+							</address>
+							<button class="directions-btn" onclick="openDirections()">
+								<i class="fas fa-directions"></i> Get Directions
+							</button>
+						</div>
+					</article>
+					
+					<article class="contact-card">
+						<div class="contact-card-content">
+							<div class="contact-icon">
+								<i class="fas fa-phone-alt text-accent"></i>
+							</div>
+							<h3>Contact Numbers</h3>
+							<div class="contact-numbers">
+								<div class="contact-item">
+									<div class="contact-number">
+										<a href="tel:+639171485067" class="contact-link call">
+											<i class="fas fa-phone"></i> +63 (917) 148-5067
+										</a>
+										<div class="contact-actions">
+											<a href="tel:+639171485067" class="action-btn call-btn" title="Call">
+												<i class="fas fa-phone"></i>
+											</a>
+											<a href="sms:+639171485067" class="action-btn sms-btn" title="Send SMS">
+												<i class="fas fa-comment-alt"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="contact-item">
+									<div class="contact-number">
+										<a href="tel:+639176769200" class="contact-link call">
+											<i class="fas fa-phone"></i> +63 (917) 676-9200
+										</a>
+										<div class="contact-actions">
+											<a href="tel:+639176769200" class="action-btn call-btn" title="Call">
+												<i class="fas fa-phone"></i>
+											</a>
+											<a href="sms:+639176769200" class="action-btn sms-btn" title="Send SMS">
+												<i class="fas fa-comment-alt"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="contact-item">
+									<div class="contact-number">
+										<a href="tel:+639178322402" class="contact-link call">
+											<i class="fas fa-phone"></i> +63 (917) 832-2402
+										</a>
+										<div class="contact-actions">
+											<a href="tel:+639178322402" class="action-btn call-btn" title="Call">
+												<i class="fas fa-phone"></i>
+											</a>
+											<a href="sms:+639178322402" class="action-btn sms-btn" title="Send SMS">
+												<i class="fas fa-comment-alt"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+					
+					<article class="contact-card">
+						<div class="contact-card-content">
+							<div class="contact-icon">
+								<i class="fas fa-clock text-accent"></i>
+							</div>
+							<h3>Office Hours</h3>
+							<div class="office-hours">
+								<div class="hours-item">
+									<span class="day">Monday - Saturday</span>
+									<span class="time">8:00 AM - 5:00 PM</span>
+								</div>
+								<div class="hours-item">
+									<span class="day">Sunday</span>
+									<span class="time closed">Closed</span>
+								</div>
+							</div>
+							<div class="current-status">
+								<span id="status-indicator" class="status-indicator"></span>
+								<span id="status-text">Checking current status...</span>
+							</div>
+						</div>
+					</article>
+				</div>
+				
+				
+			</div>
+		</section>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="logo.png" alt="School Logo" class="footer-logo">
+                    <p>Providing quality education since 2010. Our mission is to nurture young minds and prepare them for the future.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100069140122435" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <!-- <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a> -->
+                        <!-- <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a> -->
+                        <!-- <a href="#" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a> -->
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#library">Library</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Admissions</a></li>
+                        <li><a href="#">Scholarships</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Senior High School Strands</h3>
+                    <ul>
+                        <li><a href="#">Information and Communication Technology</a></li>
+                        <li><a href="#">Home Economics</a></li>
+                        <li><a href="#">Humanities and Social Sciences</a></li>
+                        <li><a href="#">Accountancy, Business and Management</a></li>
+                        <li><a href="#">General Academic Strand</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and announcements.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i> Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="copyright-content">
+                    <p>&copy; 2025 Cieverose College, Inc. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick Actions Menu -->
+    <div class="quick-actions">
+        <div class="quick-action-btn" id="search-btn">
+            <i class="fas fa-search"></i>
+            <span class="tooltip">Search</span>
+        </div>
+        <div class="quick-action-btn">
+            <i class="fas fa-calendar"></i>
+            <span class="tooltip">Calendar</span>
+        </div>
+        <div class="quick-action-btn">
+            <i class="fas fa-envelope"></i>
+            <span class="tooltip">Contact</span>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-modal-content">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button class="search-modal-close" id="search-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="middleware.js"></script>
+</body>
 </html>
