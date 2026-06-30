@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>About Cieverose College, Inc.</title>
+    <style>
+        nav {
+            background: linear-gradient(135deg, #1877f2 0%, #0d5bb7 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            color: #1877f2;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #1877f2;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #1877f2;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #2c3e50;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #1877f2;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .programs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .program-card-content {
+            padding: 1.5rem;
+        }
+        
+        .program-card h3 {
+            color: #1877f2;
+            margin-top: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="/">About Us</a> | 
+        <a href="https://www.facebook.com/profile.php?id=100069140122435">Facebook</a>
+    </nav>
+    <header>
+        <h1>About Cieverose College, Inc.</h1>
+        <p>Our story, mission, and the people behind our institution</p>
+    </header>
+
+    <div class="hero">
+        <h2>Shaping Futures Since 2005</h2>
+        <p>Providing quality education and technical training to empower communities</p>
+    </div>
+
+    <section>
+        <h2>Our History</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2005</div>
+                <h3>Foundation</h3>
+                <p>Cieverose College was established with a single technical program and 50 students in our first semester.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2010</div>
+                <h3>First Accreditation</h3>
+                <p>Received full accreditation from the Technical Education and Skills Development Authority (TESDA).</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2015</div>
+                <h3>Campus Expansion</h3>
+                <p>Opened our second building with modern laboratories and computer facilities.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2020</div>
+                <h3>Online Learning</h3>
+                <p>Successfully transitioned to blended learning during the pandemic, serving over 1,000 students remotely.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Present</div>
+                <h3>Continuing Growth</h3>
+                <p>Now offering 12 degree programs and numerous technical courses with over 2,000 enrolled students.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Our Campus</h2>
+        <p>Cieverose College is located in a 5-hectare property with modern facilities including:</p>
+        <ul>
+            <li>8 fully-equipped computer laboratories</li>
+            <li>Technical workshops for hands-on training</li>
+            <li>Library with over 10,000 volumes</li>
+            <li>Auditorium for events and seminars</li>
+            <li>Student lounge and cafeteria</li>
+            <li>Sports facilities including basketball court</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>By The Numbers</h2>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">18+</div>
+                <div>Years of Service</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2,500+</div>
+                <div>Current Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div>Degree Programs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">85%</div>
+                <div>Graduation Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Meet Our Leadership</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="President">
+                <h3>Dr. Rose Santos</h3>
+                <p>College President</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Academic Dean">
+                <h3>Prof. Michael Cruz</h3>
+                <p>Academic Dean</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Registrar">
+                <h3>Ms. Sarah Lim</h3>
+                <p>Registrar</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/150" alt="Student Affairs">
+                <h3>Mr. James Wong</h3>
+                <p>Student Affairs</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Our Accreditation</h2>
+        <p>Cieverose College is recognized by:</p>
+        <ul>
+            <li>Commission on Higher Education (CHED)</li>
+            <li>Technical Education and Skills Development Authority (TESDA)</li>
+            <li>Philippine Association of Colleges and Universities (PACU)</li>
+            <li>Accrediting Agency of Chartered Colleges and Universities in the Philippines (AACCUP)</li>
+        </ul>
+    </section>
+
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Programs</h3>
+                <ul>
+                    <li><a href="programs.html#ba">Business Administration</a></li>
+                    <li><a href="programs.html#education">Education</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li>Lot 4 Block 51(1644) Ilang-Ilang Street, Camarin, Caloocan City</li>
+                    <li>Phone: +63 (917) 148-5067 / +63 (917) 676-9200 / +63 (917) 832-2402</li>
+                    <!--
+                    <li>Email: info@cieverose.edu</li>
+                    -->
+                    <li>Office Hours: 8AM-5PM Mon-Sat</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100069140122435">FB</a>
+                    <a href="#">TW</a>
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates:</p>
+                <form>
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Cieverose College, Incorporated. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
