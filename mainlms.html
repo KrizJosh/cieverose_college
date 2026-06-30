@@ -262,37 +262,43 @@
             transform: translateY(-100%);
         }
 
-        .nav-brand {
+        /* ----- LOGO CLASS (like attachment) ----- */
+        .nav-container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            color: white;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 0;
+            width: 100%;
         }
 
-        .nav-brand:hover {
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
             transform: scale(1.02);
         }
 
-        .nav-brand img {
-            height: 36px;
-            filter: brightness(0) invert(1);
-            transition: transform 0.4s ease;
+        .logo img {
+			margin-right: 10px;
+			height: 40px;
         }
 
-        .nav-brand img:hover {
+        .logo img:hover {
             transform: rotate(-5deg) scale(1.05);
         }
 
-        .nav-brand i {
-            color: var(--gold);
-        }
-
+        /* ----- NAV LINKS ----- */
         .nav-links {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.5rem;
             list-style: none;
             align-items: center;
             flex-wrap: wrap;
@@ -1119,7 +1125,7 @@
         }
 
         /* ============================================================ */
-        /* ===== NEWS & ANNOUNCEMENTS (like attachment) ===== */
+        /* ===== NEWS & ANNOUNCEMENTS ===== */
         /* ============================================================ */
         .news-grid {
             display: grid;
@@ -1257,7 +1263,7 @@
             margin-top: 0.4rem;
         }
 
-        /* Announcements List (like attachment) */
+        /* Announcements List */
         .announcements-list {
             list-style: none;
             padding: 0;
@@ -1708,6 +1714,15 @@
                 gap: 0.4rem;
                 min-height: 60px;
             }
+            .nav-container {
+                padding: 5px 0;
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .logo img {
+                height: 32px;
+            }
             .nav-links {
                 justify-content: center;
                 gap: 0.6rem;
@@ -1819,55 +1834,26 @@
         .flex { display: flex; gap: 12px; flex-wrap: wrap; }
         .text-center { text-align: center; }
         .text-muted { color: var(--text-muted); }
-		
-		
-		.nav-container {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 15px 0;
-		}
-		
-		logo {
-			display: flex;
-			align-items: center;
-			font-weight: bold;
-			color: var(--white);
-			font-size: 1.3rem;
-			transition: var(--transition);
-		}
-
-		.logo:hover {
-			color: var(--secondary-color);
-		}
-
-		.logo img {
-			margin-right: 10px;
-			height: 40px;
-		}
-
     </style>
 </head>
 <body>
 
     <nav class="nav-bar" id="mainNav">
-		<div class="nav-container">
-			<a href="index.html" class="logo">
-				<img src="logo.png" alt="Cieverose College Logo" style="height: 50px;">
-				<span>Cieverose College</span>
-			</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Cieverose College Logo">
+                <span>Cieverose College, Inc.</span>
+            </a>
+            <ul class="nav-links">
+                <li><a class="active" data-page="home"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                <li><a data-page="contact"><i class="fas fa-phone"></i> <span>Contact</span></a></li>
+                <li>
+                    <button class="nav-settings-btn" onclick="toggleFlyout()">
+                        <i class="fas fa-cog"></i> <span>Settings</span>
+                    </button>
+                </li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a class="active" data-page="home"><i class="fas fa-home"></i> <span>Home</span></a></li>
-            <li><a data-page="contact"><i class="fas fa-phone"></i> <span>Contact</span></a></li>
-            <li>
-                <button class="nav-settings-btn" onclick="toggleFlyout()">
-                    <i class="fas fa-cog"></i> <span>Settings</span>
-                </button>
-            </li>
-        </ul>
     </nav>
 
     <section class="hero-section">
@@ -1902,7 +1888,6 @@
                 </div>
             </div>
 
-			
             <div class="tab-container">
                 <div class="tab-header">
                     <button class="tab-btn active" data-tab="mycourses"><i class="fas fa-book"></i> <span>My Courses</span></button>
@@ -1976,8 +1961,7 @@
                     </div>
                 </div>
             </div>
-			
-			
+
             <h2 class="section-title"><i class="fas fa-newspaper"></i> News & Announcements</h2>
             <div class="news-grid">
                 <div class="news-section">
@@ -1997,8 +1981,7 @@
                         </div>
                         <div class="news-excerpt">Thank you to everyone who has attended the Understanding Teaching Essentials workshop...</div>
                     </div>
-
-				</div>
+                </div>
 
                 <div class="news-section">
                     <div class="section-header">
@@ -2006,8 +1989,8 @@
                         <span class="count-badge">3</span>
                     </div>
 
-                    <ul class="announcements-list">                       
-						<li onclick="showDemoModal('📢 Announcement', 'Thank you to everyone who has attended the Teaching Essentials workshop.')">
+                    <ul class="announcements-list">
+                        <li onclick="showDemoModal('📢 Announcement', 'Thank you to everyone who has attended the Teaching Essentials workshop.')">
                             <span class="bullet"></span>
                             <span class="title">Thank you to everyone who has attended.</span>
                             <span class="date-tag">2d ago</span>
@@ -2026,8 +2009,7 @@
                 </div>
             </div>
         </div>
-
-</br></br>
+        
         <div id="page-events" class="page-section">
             <h2 class="section-title"><i class="fas fa-calendar-alt"></i> School Events</h2>
             <p class="text-muted" style="text-align:center; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">Memorable events and activities at Cieverose College</p>
@@ -2055,7 +2037,6 @@
             </div>
         </div>
 
-</br></br>
         <div id="page-contact" class="page-section">
             <h2 class="section-title"><i class="fas fa-phone"></i> Contact Us</h2>
             <p class="text-muted" style="text-align:center; font-size:1.1rem; max-width:700px; margin:0 auto 2rem;">We'd love to hear from you. Reach out for inquiries or visit our campus.</p>
@@ -2072,7 +2053,8 @@
         </div>
 
     </div>
-	
+
+    
     <div class="flyout-overlay" id="flyoutOverlay" onclick="toggleFlyout()"></div>
     <div class="flyout-menu" id="flyoutMenu">
         <div class="flyout-header">
@@ -2141,8 +2123,8 @@
             <a href="https://www.facebook.com/profile.php?id=100069140122435" target="_blank">Facebook</a>
         </p>
     </div>
-
     <script>
+        // ---- DATA ----
         const coursesData = [
             { id: 1, title: 'ICT 101 – Programming', icon: 'fa-code', badge: 'ICT', students: 32, schedule: 'MWF 10:00', desc: 'Python, Java, and problem-solving fundamentals.', progress: '8/12 modules', instructor: 'Teacher' },
             { id: 2, title: 'HE 201 – Cookery & Baking', icon: 'fa-utensils', badge: 'HE', students: 28, schedule: 'TTh 1:30', desc: 'Pastry, bread, and food service techniques.', progress: '5/8 modules', instructor: 'Chef Maria' },
@@ -2152,100 +2134,23 @@
         ];
         let courseCounter = 6;
 
-  const translations = {
-    en: {
-      dashboard: 'Dashboard',
-      mycourses: 'My Courses',
-      students: 'Students',
-      calendar: 'Calendar',
-      settings: 'Settings',
-      activeCourses: 'Active Courses',
-      studentsLabel: 'Students',
-      pendingAssignments: 'Pending Assignments',
-      avgCompletion: 'Avg. Completion',
-      recentActivity: 'Recent Activity',
-      quickActions: 'Quick Actions',
-      myCourses: 'My Courses',
-      calendarLabel: 'Calendar',
-      settingsLabel: 'Settings',
-      searchStudents: 'Search students...',
-      messageAll: 'Message All',
-      addEvent: 'Add Event',
-      today: 'Today',
-      midterm: 'Midterm',
-      holiday: 'Holiday',
-      theme: 'Theme',
-      language: 'Language',
-      light: 'Light (default)',
-      dark: 'Dark',
-      english: 'English',
-      filipino: 'Filipino',
-      spanish: 'Spanish',
-      saveSettings: 'Save Settings',
-      resetDefaults: 'Reset to Defaults',
-      settingsSaved: 'Settings saved successfully!',
-      settingsReset: 'Settings reset to defaults.',
-      manage: 'Manage',
-      addNewCourse: 'Add New Course',
-      createNewSubject: 'Create a new subject'
-    },
-    fil: {
-      dashboard: 'Dashboard',
-      mycourses: 'Aking mga Kurso',
-      students: 'Mga Mag-aaral',
-      calendar: 'Kalendaryo',
-      settings: 'Mga Setting',
-      activeCourses: 'Mga Aktibong Kurso',
-      studentsLabel: 'Mga Mag-aaral',
-      pendingAssignments: 'Mga Nakabinbin na Takdang-aralin',
-      avgCompletion: 'Average na Pagkumpleto',
-      recentActivity: 'Kamakailang Aktibidad',
-      quickActions: 'Mabilis na Aksyon',
-      myCourses: 'Aking mga Kurso',
-      calendarLabel: 'Kalendaryo',
-      settingsLabel: 'Mga Setting',
-      searchStudents: 'Maghanap ng mag-aaral...',
-      messageAll: 'Magpadala ng Mensahe sa Lahat',
-      addEvent: 'Magdagdag ng Event',
-      today: 'Ngayon',
-      midterm: 'Midterm',
-      holiday: 'Bakasyon',
-      theme: 'Tema',
-      language: 'Wika',
-      light: 'Maliwanag (default)',
-      dark: 'Madilim',
-      english: 'Ingles',
-      filipino: 'Filipino',
-      spanish: 'Espanyol',
-      saveSettings: 'I-save ang Setting',
-      resetDefaults: 'I-reset sa Default',
-      settingsSaved: 'Matagumpay na na-save ang mga setting!',
-      settingsReset: 'Na-reset sa default ang mga setting.',
-      manage: 'Pamahalaan',
-      addNewCourse: 'Magdagdag ng Bagong Kurso',
-      createNewSubject: 'Lumikha ng bagong asignatura'
-    }
-  };
-
-  let currentLang = 'en';
-
-  function applyLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('cieverose_lang', lang);
-    updatePageTexts();
-  }
-
-  function updatePageTexts() {
-    const t = translations[currentLang] || translations.en;
-
-    const statLabels = document.querySelectorAll('.stat-box .label');
-    if (statLabels.length >= 4) {
-      statLabels[0].textContent = t.activeCourses;
-      statLabels[1].textContent = t.studentsLabel;
-      statLabels[2].textContent = t.pendingAssignments;
-      statLabels[3].textContent = t.avgCompletion;
-    }
         let lastScrollY = 0;
+        const nav = document.getElementById('mainNav');
+
+        window.addEventListener('scroll', function() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollY = currentScrollY;
+        });
 
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
@@ -2285,7 +2190,7 @@
             overlay.classList.toggle('active');
             document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
         }
-		
+
         function showDemoModal(title, message, icon = 'fa-info-circle') {
             const modal = document.getElementById('demoModal');
             document.getElementById('modalTitle').textContent = title;
@@ -2316,6 +2221,24 @@
             }
         });
 
+        // ---- PAGE SWITCHING ----
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active');
+
+            document.querySelectorAll('.nav-links a[data-page]').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
+                if (a.dataset.page === pageId) a.classList.add('active');
+            });
+        }
+
+        document.querySelectorAll('.nav-links a[data-page]').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                switchPage(this.dataset.page);
+            });
+        });
 
         document.querySelectorAll('.footer a[data-page]').forEach(el => {
             el.addEventListener('click', function(e) {
@@ -2324,6 +2247,7 @@
             });
         });
 
+        // ---- TAB SWITCHING ----
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = {
             mycourses: document.getElementById('tab-mycourses'),
@@ -2342,6 +2266,7 @@
             });
         });
 
+        // ---- RENDER COURSES ----
         function renderCourses() {
             const grid = document.getElementById('courseGrid');
             let html = '';
@@ -2428,46 +2353,6 @@
                 }
             }, 2000);
         }
-
-    const quickBtns = document.querySelectorAll('.quick-actions .btn, .btn-primary, .btn-gold, .btn-outline');
-    // Just update known ones
-    document.querySelectorAll('.btn-primary, .btn-gold, .btn-outline').forEach(btn => {
-      const text = btn.textContent.trim();
-      if (text.includes('My Courses') || text.includes('Aking mga Kurso') || text.includes('Mis Cursos')) {
-        btn.innerHTML = `<i class="fas fa-book"></i> ${t.myCourses}`;
-      } else if (text.includes('Students') || text.includes('Mga Mag-aaral') || text.includes('Estudiantes')) {
-        btn.innerHTML = `<i class="fas fa-users"></i> ${t.studentsLabel}`;
-      } else if (text.includes('Calendar') || text.includes('Kalendaryo')) {
-        btn.innerHTML = `<i class="fas fa-calendar"></i> ${t.calendarLabel}`;
-      } else if (text.includes('Settings') || text.includes('Mga Setting') || text.includes('Configuración')) {
-        btn.innerHTML = `<i class="fas fa-cog"></i> ${t.settingsLabel}`;
-      }
-    });
-
-    const settingsLabels = document.querySelectorAll('.settings-group label');
-    if (settingsLabels.length >= 2) {
-      settingsLabels[0].textContent = t.theme;
-      settingsLabels[1].textContent = t.language;
-    }
-
-    const themeSelect = document.getElementById('themeSelect');
-    if (themeSelect) {
-      themeSelect.options[0].text = t.light;
-      themeSelect.options[1].text = t.dark;
-    }
-
-    const langSelect = document.getElementById('langSelect');
-    if (langSelect) {
-      langSelect.options[0].text = t.english;
-      langSelect.options[1].text = t.filipino;
-      langSelect.options[2].text = t.spanish;
-    }
-
-    const settingsBtns = document.querySelectorAll('.settings-actions .btn');
-    if (settingsBtns.length >= 2) {
-      settingsBtns[0].innerHTML = `<i class="fas fa-save"></i> ${t.saveSettings}`;
-      settingsBtns[1].innerHTML = `<i class="fas fa-undo"></i> ${t.resetDefaults}`;
-    }
 
         function resetSettingsFlyout() {
             document.getElementById('themeSelectFlyout').value = 'light';
