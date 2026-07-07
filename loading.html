@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎯 Top 10 Loading Screens</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #0f1724;
+      background-image: radial-gradient(circle at 20% 30%, #1d2b3f 0%, #0a111c 90%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* header */
+    .header {
+      text-align: center;
+      margin-bottom: 2.8rem;
+    }
+
+    .header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-shadow: 0 4px 20px rgba(0, 20, 40, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.8rem;
+    }
+
+    .header h1 i {
+      color: #fbbf24;
+      font-size: 2.4rem;
+      filter: drop-shadow(0 0 6px #fbbf2450);
+    }
+
+    .header .sub {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin-top: 0.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      letter-spacing: 0.3px;
+    }
+
+    .header .sub i {
+      margin-right: 8px;
+      color: #fbbf24;
+    }
+
+    /* grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* card */
+    .card {
+      background: rgba(20, 32, 48, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 2.5rem 2.5rem 2.5rem 2.5rem;
+      padding: 2rem 1.8rem 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px -16px #00000080, 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+      background: rgba(26, 40, 60, 0.75);
+    }
+
+    /* rank badge */
+    .rank {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+
+    .rank-number {
+      background: rgba(251, 191, 36, 0.08);
+      border-radius: 60px;
+      padding: 0.2rem 1rem 0.2rem 0.8rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #fcd34d;
+      border: 1px solid rgba(251, 191, 36, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rank-number i {
+      font-size: 0.7rem;
+      color: #fbbf24;
+    }
+
+    .rank-badge {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* loading preview area */
+    .preview {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 1.8rem;
+      padding: 1.8rem 0.8rem;
+      margin: 0.4rem 0 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 110px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(4px);
+    }
+
+    /* -------- 10 different loading styles (all inside preview) -------- */
+
+    /* 1: classic spinner + pulse */
+    .load-1 {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .load-1 .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.06);
+      border-top: 4px solid #60a5fa;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    .load-1 .pulse-text {
+      color: #cbd5e1;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .load-1 .pulse-text i {
+      color: #60a5fa;
+      font-size: 0.9rem;
+      animation: pulse-opacity 1.3s infinite;
+    }
+
+    /* 2: dots wave */
+    .load-2 {
+      display: flex;
+      gap: 12px;
+    }
+    .load-2 .dot {
+      width: 18px;
+      height: 18px;
+      background: #60a5fa;
+      border-radius: 50%;
+      animation: wave 1.2s infinite ease-in-out;
+    }
+    .load-2 .dot:nth-child(2) { animation-delay: 0.15s; background: #818cf8; }
+    .load-2 .dot:nth-child(3) { animation-delay: 0.3s; background: #a78bfa; }
+    .load-2 .dot:nth-child(4) { animation-delay: 0.45s; background: #c084fc; }
+    .load-2 .dot:nth-child(5) { animation-delay: 0.6s; background: #e879f9; }
+
+    /* 3: spinning circle with segments */
+    .load-3 {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .load-3 .circle-seg {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #f472b6, #8b5cf6, #f472b6);
+      animation: spin 1.6s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 calc(100% - 8px));
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 8px), #000 calc(100% - 8px));
+    }
+    .load-3 span {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    /* 4: bouncing bars */
+    .load-4 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .load-4 .bar {
+      width: 8px;
+      height: 32px;
+      background: #34d399;
+      border-radius: 20px;
+      animation: bounce-bar 1s infinite ease-in-out;
+    }
+    .load-4 .bar:nth-child(2) { animation-delay: 0.1s; background: #6ee7b7; height: 44px; }
+    .load-4 .bar:nth-child(3) { animation-delay: 0.2s; background: #a7f3d0; height: 28px; }
+    .load-4 .bar:nth-child(4) { animation-delay: 0.3s; background: #6ee7b7; height: 48px; }
+    .load-4 .bar:nth-child(5) { animation-delay: 0.4s; background: #34d399; height: 34px; }
+
+    /* 5: pulse ring */
+    .load-5 {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .load-5 .ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 4px solid rgba(251, 191, 36, 0.15);
+      border-top: 4px solid #fbbf24;
+      animation: spin 1.2s linear infinite;
+      position: relative;
+    }
+    .load-5 .ring::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid rgba(251, 191, 36, 0.04);
+      animation: pulse-ring 1.8s infinite;
+    }
+    .load-5 .label {
+      color: #fcd34d;
+      font-weight: 400;
+      font-size: 0.95rem;
+    }
+
+    /* 6: clock loader */
+    .load-6 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .load-6 .clock {
+      font-size: 2.4rem;
+      color: #f472b6;
+      animation: spin 3s linear infinite;
+    }
+    .load-6 .clock-text {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.02);
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* 7: dots with label */
+    .load-7 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .load-7 .dots-group {
+      display: flex;
+      gap: 14px;
+    }
+    .load-7 .dots-group span {
+      width: 14px;
+      height: 14px;
+      background: #f472b6;
+      border-radius: 50%;
+      animation: pulse-dot 1.4s infinite;
+    }
+    .load-7 .dots-group span:nth-child(2) { animation-delay: 0.2s; background: #fb7185; }
+    .load-7 .dots-group span:nth-child(3) { animation-delay: 0.4s; background: #fda4af; }
+    .load-7 .dots-group span:nth-child(4) { animation-delay: 0.6s; background: #fecdd3; }
+    .load-7 .load-label {
+      color: #94a3b8;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* 8: gradient spinner */
+    .load-8 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .load-8 .grad-spin {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+      animation: spin 1.4s linear infinite;
+      mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px));
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px));
+    }
+    .load-8 .label {
+      color: #b9d0f0;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+
+    /* 9: bouncing circle */
+    .load-9 {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .load-9 .bounce-ball {
+      width: 40px;
+      height: 40px;
+      background: #fbbf24;
+      border-radius: 50%;
+      animation: bounce-ball 0.9s infinite ease-in-out;
+      box-shadow: 0 4px 20px rgba(251, 191, 36, 0.15);
+    }
+    .load-9 .label {
+      color: #fcd34d;
+      font-weight: 300;
+    }
+
+    /* 10: text typing + spinner */
+    .load-10 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .load-10 .typing {
+      display: flex;
+      gap: 6px;
+    }
+    .load-10 .typing span {
+      width: 12px;
+      height: 12px;
+      background: #60a5fa;
+      border-radius: 50%;
+      animation: wave 1.2s infinite;
+    }
+    .load-10 .typing span:nth-child(2) { animation-delay: 0.15s; }
+    .load-10 .typing span:nth-child(3) { animation-delay: 0.3s; }
+    .load-10 .typing span:nth-child(4) { animation-delay: 0.45s; }
+    .load-10 .typing span:nth-child(5) { animation-delay: 0.6s; }
+    .load-10 .label {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* ----- animations ----- */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse-opacity { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+    @keyframes wave {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-14px); }
+    }
+    @keyframes bounce-bar {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+      50% { transform: scaleY(1.2); opacity: 1; }
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.3; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    @keyframes bounce-ball {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    /* card footer */
+    .card-footer {
+      margin-top: 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 1rem;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+
+    .card-footer .tag {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      color: #94a3b8;
+    }
+
+    .card-footer i {
+      margin-right: 4px;
+      color: #fbbf24;
+      opacity: 0.5;
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 2rem; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- header -->
+  <div class="header">
+    <h1>
+      <i class="fas fa-trophy"></i>
+      <span>Top 10</span>
+      <span style="color: #fbbf24;">Loading Screens</span>
+    </h1>
+    <div class="sub">
+      <i class="fas fa-bolt"></i> 10 creative loaders · pure CSS · ready to use
+    </div>
+  </div>
+
+  <!-- grid 10 cards -->
+  <div class="grid">
+    <!-- 1 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number"><i class="fas fa-crown" style="color: #fbbf24;"></i> #1</span>
+        <span class="rank-badge"><i class="far fa-clock"></i> classic</span>
+      </div>
+      <div class="preview">
+        <div class="load-1">
+          <div class="spinner"></div>
+          <div class="pulse-text"><i class="fas fa-circle"></i> Loading</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-code"></i> spinner + pulse</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.8</span>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number"><i class="fas fa-medal" style="color: #a0aec0;"></i> #2</span>
+        <span class="rank-badge"><i class="fas fa-water"></i> wave</span>
+      </div>
+      <div class="preview">
+        <div class="load-2">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-ellipsis-h"></i> dots wave</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.7</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number"><i class="fas fa-medal" style="color: #cd7f32;"></i> #3</span>
+        <span class="rank-badge"><i class="fas fa-circle-notch"></i> gradient</span>
+      </div>
+      <div class="preview">
+        <div class="load-3">
+          <div class="circle-seg"></div>
+          <span>segments</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-palette"></i> conic spinner</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.6</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#4</span>
+        <span class="rank-badge"><i class="fas fa-chart-bar"></i> bars</span>
+      </div>
+      <div class="preview">
+        <div class="load-4">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-arrow-up"></i> bouncing bars</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.5</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#5</span>
+        <span class="rank-badge"><i class="fas fa-ring"></i> ring</span>
+      </div>
+      <div class="preview">
+        <div class="load-5">
+          <div class="ring"></div>
+          <span class="label">pulse ring</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-sync-alt"></i> double ring</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.4</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#6</span>
+        <span class="rank-badge"><i class="fas fa-clock"></i> time</span>
+      </div>
+      <div class="preview">
+        <div class="load-6">
+          <i class="fas fa-clock clock"></i>
+          <span class="clock-text">loading</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-hourglass-half"></i> clock spin</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.3</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#7</span>
+        <span class="rank-badge"><i class="fas fa-circle"></i> pulse</span>
+      </div>
+      <div class="preview">
+        <div class="load-7">
+          <div class="dots-group">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="load-label">pulsing dots</div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-heartbeat"></i> pulse</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.2</span>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#8</span>
+        <span class="rank-badge"><i class="fas fa-magic"></i> gradient</span>
+      </div>
+      <div class="preview">
+        <div class="load-8">
+          <div class="grad-spin"></div>
+          <span class="label">gradient spin</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-fill-drip"></i> conic mask</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.1</span>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#9</span>
+        <span class="rank-badge"><i class="fas fa-basketball-ball"></i> bounce</span>
+      </div>
+      <div class="preview">
+        <div class="load-9">
+          <div class="bounce-ball"></div>
+          <span class="label">bounce</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-arrow-down"></i> ball bounce</span>
+        <span class="tag"><i class="fas fa-star"></i> 4.0</span>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+      <div class="rank">
+        <span class="rank-number">#10</span>
+        <span class="rank-badge"><i class="fas fa-comment-dots"></i> typing</span>
+      </div>
+      <div class="preview">
+        <div class="load-10">
+          <div class="typing">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <span class="label">typing…</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span><i class="fas fa-keyboard"></i> wave dots</span>
+        <span class="tag"><i class="fas fa-star"></i> 3.9</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
