@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✨ loading · #10 wave</title>
-  <!-- Font Awesome 6 (free) -->
+  <title>Cieverose College LMS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
@@ -240,10 +239,8 @@
 </head>
 <body>
 <div class="container">
-  <!-- single card : #10 loader + redirect -->
   <div class="card">
 
-    <!-- preview: #10 loader (exactly as in original, polished) -->
     <div class="preview">
       <div class="load-10">
         <div class="typing">
@@ -253,8 +250,6 @@
 		</div>
     </div>
 
-
-    <!-- subtle note: redirect after 3s -->
     <div class="sub-note">
       <i class="fas fa-sync-alt fa-fw"></i> redirecting in 3s …
     </div>
@@ -263,10 +258,8 @@
 
 <script>
   (function() {
-    // target URL
     const TARGET_URL = 'https://cieverosecollege.gnomio.com/';
 
-    // get the link element (optional, but we update href for consistency)
     const linkEl = document.getElementById('redirectLink');
     if (linkEl) {
       linkEl.href = TARGET_URL;
@@ -274,17 +267,12 @@
       linkEl.textContent = 'cieverosecollege.gnomio.com';
     }
 
-    // Auto‑redirect after 3 seconds
     setTimeout(function() {
       window.location.href = TARGET_URL;
     }, 3000); // 3000ms = 3s
 
-    // (optional) if user clicks on the link, we don't interfere,
-    // but we also want the link to work normally.
-    // All good.
   })();
 </script>
 
-<!-- small note: the link is clickable, and auto-redirect happens -->
 </body>
 </html>
